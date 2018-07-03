@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>仓库</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="warehouse.css"/>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav h1">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
+	    <h1 class="mui-title">仓库</h1>
+	</header>
+	<div style="line-height: 1;" class="mui-content position-relative padding-b-30">
+		<div class="d-flex search margin-t-10 margin-b-10 margin-l-15 margin-r-15 justify-content-center align-items-center h2">搜索仓库/厂房</div>
+		<div class="d-flex align-items-center font-l3-color padding-a-14 bor-bottom nav-option h3">
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">
+				<div class="per d-flex flex-auto align-items-center justify-content-center select">
+						<span>全国</span><i class="sj"></i>
+				</div>
+				<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
+						<span>全国</span><i class="sj1"></i>
+				</div>
+			</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">
+					<div class="per d-flex flex-auto align-items-center justify-content-center select">
+							<span>仓库</span><i class="sj"></i>
+					</div>
+					<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
+							<span>仓库</span><i class="sj1"></i>
+					</div>
+				</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">
+					<div class="per d-flex flex-auto align-items-center justify-content-center select">
+							<span>来源</span> <i class="sj"></i>
+					</div>
+					<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
+							<span>来源</span><i class="sj1"></i>
+					</div>
+				</div>
+		</div>
+		<ul class="d-flex flex-column margin-l-14">
+			<li class="d-flex padding-t-5 padding-b-14 padding-r-14 bor-bottom">
+				<img class="warehouse-img margin-r-14" src="../../static/img/cangku.jpg"/>
+				<div class="d-flex flex-auto flex-column">
+					<div class="font-size-15 margin-t-12">上海宝安公路物流仓库 </div>
+					<div class="margin-t-15 font-size-10 font-l2-color">嘉定 - 马陆 - 仓库</div>
+					<div class="d-flex margin-t-10">
+						<div style="color: #F54725;" class="flex-auto font-size-14">面议</div>
+						<div class="cangku-label">出租</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="box hide">
+			<!-- 省市区 -->
+			<div class="area hide common">
+				<div class="step1 step" data-attr = "1">
+					<div class="header">
+						已选择: <span>全国</span>
+					</div>
+					<div class="container d-flex flex-auto align-items-center justify-content-center">
+						<div class="d-flex flex-wrap font-size-14 font-l2-color " id="province">
+							<!-- <div class="length-sel select11">北京1</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div> -->
+						</div>
+					</div>
+				</div>
+				<div class="step2 hide step" data-attr = "2">
+					<div class="header">
+						已选择: <span>全国</span>
+						<em>返回上一级</em>
+					</div>
+					<div class="container d-flex flex-auto align-items-center justify-content-center">
+						<div class="d-flex flex-wrap font-size-14 font-l2-color" id="citiesList">
+							<div class="length-sel select11">北京2</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
+						</div>
+					</div>
+				</div>
+				<div class="step3 hide step" data-attr = "3">
+					<div class="header">
+						已选择: <span>全国</span>
+						<em>返回上一级</em>
+					</div>
+					<div class="container d-flex flex-auto align-items-center justify-content-center">
+						<div class="d-flex flex-wrap font-size-14 font-l2-color">
+							<div class="length-sel select11">北京3</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 仓库属性 -->
+			<div class="attribute hide common">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">Item 1</li>
+					<li class="mui-table-view-cell">Item 2</li>
+					<li class="mui-table-view-cell">Item 3</li>
+				</ul>
+			</div>
+			<!-- 来源属性 -->
+			<div class="source hide common">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">来源不限</li>
+					<li class="mui-table-view-cell">直营</li>
+					<li class="mui-table-view-cell">集市</li>
+				</ul>
+			</div>
+		</div>
+		
+		
+	</div>
+	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="warehouse.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

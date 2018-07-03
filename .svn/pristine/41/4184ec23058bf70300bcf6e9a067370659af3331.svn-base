@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>二手车详情</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="secondhandCarDetail.css"/>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
+	    <h1 class="mui-title">陆V中卡  青岛解放</h1>
+	</header>
+	<div class="mui-content position-relative padding-b-30">
+		<div class="d-flex secondcar-banner align-items-end">
+			<div class="car-info margin-b-30 margin-l-13">上海市 徐汇区 2018-05-23 发布</div>
+		</div>
+		<div class="d-flex flex-column bg-white">
+			<div class="d-flex flex-column car-info-card">
+				<div class="font-l4-color font-size-17">青岛解放 陆V中卡 180马力 4x2  6.8米仓 </div>
+				<div class="d-flex">
+					<div>商家推荐</div>
+					<div class="flex-auto">车源编号 B4y76890</div>
+					<div>热度</div>
+					<div>455</div>
+				</div>
+				<div class="d-flex flex-wrap">
+					<dic>提供挂靠</dic>
+					<dic>代办过户</dic>
+				</div>
+			</div>
+			<div class="d-flex margin-l-30 margin-r-30">
+				<div>全款价格</div>
+				<div class="flex-auto">
+					<span>14.00</span>
+					<span>万</span>
+				</div>
+				<div>可分期，首付8万起</div>
+			</div>
+		</div>
+	</div>
+	<script src="secondhandCarDetail.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+
+

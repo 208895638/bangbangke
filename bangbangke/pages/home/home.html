@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>首页</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link href="../../static/css/mui.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="home.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<!--<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">标题</h1>
+	</header>-->
+	<div class="mui-content padding-b-60">
+		<div class="banner"></div>
+		<div class="d-flex bg-white margin-t-30">
+			<div id="goods" class="d-flex flex-column flex-auto justify-content-center selected">
+				<div class="font-l4-color">
+					<img src="../../static/images/huoyuan.png" />
+					<div>货源</div>
+				</div>
+			</div>
+			<div id="cars"class="d-flex flex-column flex-auto justify-content-center selected">
+				<div class="font-l4-color">
+					<img src="../../static/images/cheyuan.png" />
+					<div>车源</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop">
+				<div class="font-l4-color">
+					<img src="../../static/images/zhuanxian.png" />
+					<div>专线</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop" id="warehouse">
+				<div class="font-l4-color">
+					<img src="../../static/images/cangku.png" />
+					<div>仓库</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop">
+				<div class="font-l4-color">
+					<img src="../../static/images/park.png"/>
+					<div>停车场</div>
+				</div>
+			</div>
+		</div>
+		<div class="d-flex bg-white margin-t-30 margin-b-40">
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop">
+				<div class="font-l4-color">
+					<img src="../../static/images/baoxian.png"/>
+					<div>保险</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop">
+				<div class="font-l4-color">
+					<img src="../../static/images/ershouche.png" />
+					<div>二手车</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop">
+				<div class="font-l4-color">
+					<img src="../../static/images/weixiu.png"/>
+					<div>维修保养</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop">
+				<div class="font-l4-color">
+					<img src="../../static/images/shangchao.png"/>
+					<div>商超</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop">
+				<div class="font-l4-color">
+					<img src="../../static/images/zhaopin.png"/>
+					<div>招聘</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg-l1 padding-a-5"></div>
+		<div class="d-flex flex-wrap margin-l-5 margin-r-5 margin-t-10 margin-b-10">
+			<div class="content-img1 margin-a-5"></div>
+			<div class="content-img2 margin-a-5"></div>
+			<div class="content-img3 margin-a-5"></div>
+			<div class="content-img4 margin-a-5"></div>
+		</div>
+	</div>
+	<nav class="mui-bar mui-bar-tab">
+		<a id="home" class="mui-tab-item mui-active">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
+		</a>
+		<a id="order" class="mui-tab-item">
+			<span class="mui-icon mui-icon-phone"></span>
+			<span class="mui-tab-label">运单</span>
+		</a>
+		<a id="mine" class="mui-tab-item">
+			<span class="mui-icon mui-icon-email"></span>
+			<span class="mui-tab-label">我的</span>
+		</a>
+	</nav>
+	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="home.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

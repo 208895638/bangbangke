@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>我的</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="mine.css"/>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+    <h1 class="mui-title">我的</h1>
+	</header>
+	<div style="line-height: 1;" class="mui-content position-relative bg-white margin-b-60 margin-a-15 font-size-20">
+		待开放...
+	</div>
+	<nav class="mui-bar mui-bar-tab">
+		<a id="home" class="mui-tab-item">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
+		</a>
+		<a id="order" class="mui-tab-item">
+			<span class="mui-icon mui-icon-phone"></span>
+			<span class="mui-tab-label">运单</span>
+		</a>
+		<a id="mine" class="mui-tab-item mui-active">
+			<span class="mui-icon mui-icon-email"></span>
+			<span class="mui-tab-label">我的</span>
+		</a>
+	</nav>
+	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="mine.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+

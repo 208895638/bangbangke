@@ -1,0 +1,42 @@
+.title{
+	margin: 0.36rem 0 0.48rem;
+	font-size: 0.24rem;
+}
+.phone-img{
+	width: 0.23rem;
+	height: 0.23rem;
+	background-image: url(../../static/images/icon.png);
+  background-size: 3.755rem 3.415rem;
+  background-repeat: no-repeat;
+  background-position: -0.4rem 0;
+}
+.password-img{
+	width: 0.23rem;
+	height: 0.23rem;
+	background-image: url(../../static/images/icon.png);
+  background-size: 3.755rem 3.415rem;
+  background-repeat: no-repeat;
+  background-position: -0.65rem 0;
+}
+.eye-img{
+	width: 0.23rem;
+	height: 0.23rem;
+	background-image: url(../../static/images/icon.png);
+  background-size: 3.755rem 3.415rem;
+  background-repeat: no-repeat;
+  background-position: -1.15rem 0.02rem;
+}
+.login{
+	background-color: #45C175;
+	border-radius: 0.04rem;
+	color: #FFFFFF;
+	font-size: 0.15rem;
+}
+.register{
+	background-color: #ffffff;
+	border-radius: 0.04rem;
+	border: 1px solid #999999;
+	color: #999999;
+	font-size: 0.15rem;
+	margin-top: 0.2rem;
+}

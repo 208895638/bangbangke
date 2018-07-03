@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>二手车</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="secondhandCar.css"/>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
+	    <h1 class="mui-title">二手车</h1>
+	</header>
+	<div style="line-height: 1;" class="mui-content position-relative padding-b-30">
+		<div class="d-flex align-items-center">
+			<div id="site" class="d-flex align-items-center">上海</div>
+			<div class="d-flex flex-auto search margin-t-10 margin-b-10 margin-l-15 margin-r-15 justify-content-center align-items-center">搜索仓库/厂房</div>
+		</div>
+		<div class="d-flex align-items-center font-l3-color padding-a-14 bor-bottom">
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">默认排序</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">车型不限</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">品牌不限</div>
+		</div>
+		<ul class="d-flex flex-column margin-l-14">
+			<li style="line-height: 1.26;" class="d-flex padding-t-16 padding-b-14 padding-r-14 bor-bottom">
+				<img class="car-img margin-r-14" src="../../static/img/cangku.jpg"/>
+				<div class="d-flex flex-auto flex-column justify-content-between">
+					<div class="font-size-15">青岛解放 陆V中卡 180马力 4x2 6.8米仓</div>
+					<div class="">
+						<div class="font-size-10 font-l2-color">
+							<span>2016年11月</span>
+							<span>5万公里</span>
+							<span>国五</span>
+							<span>其他</span>
+						</div>
+						<div class="d-flex margin-t-10 align-items-center">
+							<div style="color: #F54725;" class="font-size-14 margin-r-13">14.00万</div>
+							<div class="car-label">商家推荐</div>
+						</div>
+					</div>
+					
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script src="secondhandCar.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+

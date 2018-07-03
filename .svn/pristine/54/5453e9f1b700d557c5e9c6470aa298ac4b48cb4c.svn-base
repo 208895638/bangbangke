@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>仓库</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="warehouse.css"/>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
+	    <h1 class="mui-title">仓库</h1>
+	</header>
+	<div style="line-height: 1;" class="mui-content position-relative padding-b-30">
+		<div class="d-flex search margin-t-10 margin-b-10 margin-l-15 margin-r-15 justify-content-center align-items-center">搜索仓库/厂房</div>
+		<div class="d-flex align-items-center font-l3-color padding-a-14 bor-bottom">
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">全上海</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">属性不限</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">来源不限</div>
+		</div>
+		<ul class="d-flex flex-column margin-l-14">
+			<li class="d-flex padding-t-5 padding-b-14 padding-r-14 bor-bottom">
+				<img class="warehouse-img margin-r-14" src="../../static/img/cangku.jpg"/>
+				<div class="d-flex flex-auto flex-column">
+					<div class="font-size-15 margin-t-12">上海宝安公路物流仓库 </div>
+					<div class="margin-t-15 font-size-10 font-l2-color">嘉定 - 马陆 - 仓库</div>
+					<div class="d-flex margin-t-10">
+						<div style="color: #F54725;" class="flex-auto font-size-14">面议</div>
+						<div class="cangku-label">出租</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script src="warehouse.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
