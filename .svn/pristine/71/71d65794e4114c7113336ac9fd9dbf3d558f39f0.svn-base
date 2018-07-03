@@ -112,6 +112,7 @@ $(function(){
                 "warehouse_area":$(this).html()
             }
         }
+        console.log(data1);
         obj.filterOptions(
             data1
         )
@@ -169,31 +170,14 @@ $(function(){
 			url:'./search/search.html'
 		});
 	});
-    // 点击仓库进入详情
-    $("#list").on("click","li",function(){
-        var obj = {
-            Contact_information:$(this).attr("data-Contact_information"),
-            Contact_person:$(this).attr("data-Contact_person"),
-            Fire_class:$(this).attr("data-Fire_class"),
-            Price:$(this).attr("data-Price"),
-            Title:$(this).attr("data-Title"),
-            Warehouse_address:$(this).attr("data-Warehouse_address"),
-            Warehouse_area:$(this).attr("data-Warehouse_area"),
-            Warehouse_floor:$(this).attr("data-Warehouse_floor"),
-            Warehouse_type:$(this).attr("data-Warehouse_type"),
-            id:$(this).attr("data-id")
-        }
-        setStorage("data",JSON.stringify(obj));
-        mui.openWindow({
-			url:'../warehouseDetail/warehouseDetail.html'
-		});
-    });
+    
 });
 
 
 var obj = {
     init(){  //初始化获取仓库丨
         var a = obj.getUrlParam(window.location.href,"search");
+        console.log( a)
         if(a){
             $("#search").html(a);
             obj.filterOptions({
@@ -212,6 +196,7 @@ var obj = {
                 timeout: 10000,
                 success: function(data) {
                     if(data.code=="200"){
+                       console.log(data.data);
                        obj.render(data.data);
                     }else{
                             alert(data.msg);
@@ -225,9 +210,8 @@ var obj = {
     },
     render(data){ //渲染获取的仓库数据结果
         var html = "";
-        console.log(data);
         $.map(data,function(item,i){
-            html+="<li class='d-flex padding-t-5 padding-b-14 padding-r-14 bor-bottom' data-Contact_information="+item.Contact_information+"  data-Contact_person="+item.Contact_person+" data-Fire_class="+item.Fire_class+" data-Price="+item.Price+" data-Title="+item.Title+" data-Warehouse_address="+item.Warehouse_address+" data-Warehouse_area="+item.Warehouse_area+" data-Warehouse_floor="+item.Warehouse_floor+" data-Warehouse_type="+item.Warehouse_type+" data-id="+item.id+">"
+            html+="<li class='d-flex padding-t-5 padding-b-14 padding-r-14 bor-bottom'>"
                 // +  "<img class='warehouse-img margin-r-14' src='../../static/img/cangku.jpg'/>"
                 +   "<div class='d-flex flex-auto flex-column'>"
                 +    "<div class='font-size-15 margin-t-12'>"+ item.Title+"</div>"
@@ -242,6 +226,7 @@ var obj = {
         $("#list").html(html);
     },
     filterOptions(str){  //筛选获取的结果
+        console.log(str)
         mui.ajax({
             url:basePath+"api/Warehouse/WarehouseWhere",
             // headers:{'Authorization':token},
@@ -253,6 +238,7 @@ var obj = {
             timeout: 10000,
             success: function(data5) {
                 if(data5.code=="200"){
+                   console.log(data5.data,333);
                    obj.render(data5.data);
                 }else{
                         alert(data.msg);
@@ -275,6 +261,7 @@ var obj = {
             timeout: 10000,
             success: function(data) {
                 if(data.code=="200"){
+                   console.log(data.data);
                     obj.renderWarehouseType(data.data);
                 }else{
                         alert(data.msg);

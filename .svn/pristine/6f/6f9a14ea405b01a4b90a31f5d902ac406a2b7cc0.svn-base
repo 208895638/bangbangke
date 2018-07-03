@@ -56,7 +56,7 @@
 				</div> -->
 		</div>
 		<ul class="d-flex flex-column margin-l-14" id="list">
-			<!-- <li class="d-flex padding-t-5 padding-b-14 padding-r-14 bor-bottom">
+			<li class="d-flex padding-t-5 padding-b-14 padding-r-14 bor-bottom">
 				<img class="warehouse-img margin-r-14" src="../../static/img/cangku.jpg"/>
 				<div class="d-flex flex-auto flex-column">
 					<div class="font-size-15 margin-t-12">上海宝安公路物流仓库 </div>
@@ -66,7 +66,7 @@
 						<div class="cangku-label">出租</div>
 					</div>
 				</div>
-			</li> -->
+			</li>
 		</ul>
 		<div class="box hide">
 			<!-- 省市区 -->

@@ -25,12 +25,12 @@
 	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
 	    <h1 class="mui-title">详情</h1>
 	</header>
-	<div style="line-height: 1;background-color: #f2f2f2;" class="mui-content position-relative">
+	<div style="line-height: 1;background-color: #f2f2f2;" class="mui-content position-relative" id="detailBox">
 		<div class="banner"></div>
 		<div class="d-flex flex-column padding-a-14 bg-white margin-b-10">
-			<div class="font-size-15 font-l4-color">嘉定区马陆镇宝安公路科福路仓库出租 </div>
+			<div class="font-size-15 font-l4-color" id="Title">嘉定区马陆镇宝安公路科福路仓库出租 </div>
 			<div class="d-flex margin-t-10 align-items-center">
-				<div style="color: #F54725;" class="flex-auto font-size-20">面议</div>
+				<div style="color: #F54725;" class="flex-auto font-size-20" id="Price">面议</div>
 				<div class="lable font-size-10">直营</div>
 			</div>
 			<div class="d-flex margin-t-15 font-l2-color">
@@ -41,15 +41,15 @@
 		<div class="bg-white d-flex flex-column padding-a-14 font-size-15">
 			<div class="d-flex margin-b-10">
 				<div class="margin-r-10 font-l3-color">面<span class="perch">占位</span>积</div>
-				<div class="flex-auto font-l4-color">共2档（400㎡，500㎡）层高8-11米</div>
+				<div class="flex-auto font-l4-color" id="Warehouse_area">共2档（400㎡，500㎡）层高8-11米</div>
 			</div>
 			<div class="d-flex margin-b-10">
 				<div class="margin-r-10 font-l3-color">仓库地坪</div>
-				<div class="flex-auto font-l4-color">全部</div>
+				<div class="flex-auto font-l4-color" id="Warehouse_floor">全部</div>
 			</div>
 			<div class="d-flex margin-b-10">
 				<div class="margin-r-10 font-l3-color">仓库类型</div>
-				<div class="flex-auto font-l4-color">专线档口</div>
+				<div class="flex-auto font-l4-color" id="Warehouse_type">专线档口</div>
 			</div>
 			<div class="d-flex margin-b-10">
 				<div class="margin-r-10 font-l3-color">建筑面积</div>
@@ -57,7 +57,7 @@
 			</div>
 			<div class="d-flex margin-b-10">
 				<div class="margin-r-10 font-l3-color">消防类别</div>
-				<div class="flex-auto font-l4-color">丙二类</div>
+				<div class="flex-auto font-l4-color" id="Fire_class">丙二类</div>
 			</div>
 			<div class="d-flex margin-b-10">
 				<div class="margin-r-10 font-l3-color">星<span class="perch">占位</span>级</div>
@@ -69,19 +69,21 @@
 			</div>
 			<div class="d-flex margin-b-10">
 				<div class="margin-r-10 font-l3-color">联系电话</div>
-				<div class="flex-auto font-l4-color">15216684907</div>
+				<div class="flex-auto font-l4-color" id="Contact_person">15216684907</div>
 			</div>
 		</div>
 		<div class="d-flex bg-white">
 			<div class="d-flex flex-auto flex-column bg-white margin-a-14">
 				<div class="d-flex padding-b-15 margin-b-10 bor-bottom font-size-15">
 					<div class="margin-r-10 font-l3-color">地<span class="perch">占位</span>址</div>
-					<div class="flex-auto font-l4-color">上海嘉定区宝安路</div>
+					<div class="flex-auto font-l4-color" id="Warehouse_address">上海嘉定区宝安路</div>
 				</div>
 				<div class="map"></div>
 			</div>
 		</div>
 	</div>
+	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
 	<script src="warehouseDetail.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

@@ -62,3 +62,14 @@
 	padding: 0.01rem;
 	font-size: 0.1rem;
 }
+.hide{
+	display: none;
+}
+.box{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,0.5);
+	z-index: 20;
+}
