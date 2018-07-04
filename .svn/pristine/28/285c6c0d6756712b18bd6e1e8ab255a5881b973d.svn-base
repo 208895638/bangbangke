@@ -26,26 +26,16 @@
 	    <h1 class="mui-title">仓库</h1>
 	</header>
 	<div style="line-height: 1;" class="mui-content position-relative padding-b-30">
-		<!-- <div class="d-flex search margin-t-10 margin-b-10 margin-l-15 margin-r-15 justify-content-center align-items-center h2" id = "search">
+		<div class="d-flex search margin-t-10 margin-b-10 margin-l-15 margin-r-15 justify-content-center align-items-center h2" id = "search">
 			搜索仓库/厂房
-		</div> -->
+		</div>
 		<div class="d-flex align-items-center font-l3-color padding-a-14 bor-bottom nav-option h3">
-				<div class="d-flex flex-auto align-items-center justify-content-center xiala" id="area">
-						<div class="per d-flex flex-auto align-items-center justify-content-center select">
-								<span>全国</span><i class="sj"></i>
-						</div>
-						<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
-								<span>全国</span><i class="sj1"></i>
-						</div>
-					</div>
-					<div class="d-flex flex-auto align-items-center justify-content-center xiala">
-							<div class="per d-flex flex-auto align-items-center justify-content-center select">
-									<span>仓库</span><i class="sj"></i>
-							</div>
-							<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
-									<span>仓库</span><i class="sj1"></i>
-							</div>
-						</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala" id="area">
+				
+			</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala cangku">
+					
+				</div>
 			<!-- <div class="d-flex flex-auto align-items-center justify-content-center xiala">
 					<div class="per d-flex flex-auto align-items-center justify-content-center select">
 							<span>来源</span> <i class="sj"></i>

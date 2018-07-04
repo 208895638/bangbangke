@@ -26,26 +26,26 @@
 	    <h1 class="mui-title">仓库</h1>
 	</header>
 	<div style="line-height: 1;" class="mui-content position-relative padding-b-30">
-		<!-- <div class="d-flex search margin-t-10 margin-b-10 margin-l-15 margin-r-15 justify-content-center align-items-center h2" id = "search">
+		<div class="d-flex search margin-t-10 margin-b-10 margin-l-15 margin-r-15 justify-content-center align-items-center h2" id = "search">
 			搜索仓库/厂房
-		</div> -->
+		</div>
 		<div class="d-flex align-items-center font-l3-color padding-a-14 bor-bottom nav-option h3">
-				<div class="d-flex flex-auto align-items-center justify-content-center xiala" id="area">
-						<div class="per d-flex flex-auto align-items-center justify-content-center select">
-								<span>全国</span><i class="sj"></i>
-						</div>
-						<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
-								<span>全国</span><i class="sj1"></i>
-						</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala" id="area">
+				<div class="per d-flex flex-auto align-items-center justify-content-center select">
+						<span>全国</span><i class="sj"></i>
+				</div>
+				<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
+						<span>全国</span><i class="sj1"></i>
+				</div>
+			</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala">
+					<div class="per d-flex flex-auto align-items-center justify-content-center select">
+							<span>仓库</span><i class="sj"></i>
 					</div>
-					<div class="d-flex flex-auto align-items-center justify-content-center xiala">
-							<div class="per d-flex flex-auto align-items-center justify-content-center select">
-									<span>仓库</span><i class="sj"></i>
-							</div>
-							<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
-									<span>仓库</span><i class="sj1"></i>
-							</div>
-						</div>
+					<div class="per d-flex flex-auto align-items-center justify-content-center hide selected">
+							<span>仓库</span><i class="sj1"></i>
+					</div>
+				</div>
 			<!-- <div class="d-flex flex-auto align-items-center justify-content-center xiala">
 					<div class="per d-flex flex-auto align-items-center justify-content-center select">
 							<span>来源</span> <i class="sj"></i>
@@ -77,7 +77,10 @@
 					</div>
 					<div class="container d-flex flex-auto align-items-center justify-content-center">
 						<div class="d-flex flex-wrap font-size-14 font-l2-color " id="province">
-							
+							<!-- <div class="length-sel select11">北京1</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div> -->
 						</div>
 					</div>
 				</div>
@@ -88,7 +91,10 @@
 					</div>
 					<div class="container d-flex flex-auto align-items-center justify-content-center">
 						<div class="d-flex flex-wrap font-size-14 font-l2-color" id="citiesList">
-							
+							<div class="length-sel select11">北京2</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
 						</div>
 					</div>
 				</div>
@@ -99,15 +105,20 @@
 					</div>
 					<div class="container d-flex flex-auto align-items-center justify-content-center">
 						<div class="d-flex flex-wrap font-size-14 font-l2-color" id="areasList">
-							
+							<div class="length-sel select11">北京3</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
+							<div class="length-sel">北京</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- 仓库属性 -->
 			<div class="attribute hide common">
-				<ul class="d-flex flex-wrap font-size-14 font-l2-color cangku" id="warehouseType">
-					<li class="length-sel">Item 1</li>
+				<ul class="mui-table-view" id="warehouseType">
+					<li class="mui-table-view-cell">Item 1</li>
+					<li class="mui-table-view-cell">Item 2</li>
+					<li class="mui-table-view-cell">Item 3</li>
 				</ul>
 			</div>
 			<!-- 来源属性 -->

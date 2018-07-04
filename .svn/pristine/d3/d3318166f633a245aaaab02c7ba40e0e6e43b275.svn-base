@@ -1,12 +1,12 @@
 $(function(){
     var h1 =$(".h1").height(),
-    // h2 =$(".h2").height(),
-    // m = parseFloat($(".h2").css("margin-top").split("px")[0]),
+    h2 =$(".h2").height(),
+    m = parseFloat($(".h2").css("margin-top").split("px")[0]),
     h3 =$(".h3").height();
     selectedArea = "";
     var token  = getStorage("appToken");
     // 给nav 点击出现的遮罩定位
-    $(".box").css({"top":h1+h3+9+"px"});
+    $(".box").css({"top":h1+h2+m+h3+9+"px"});
     // 三个选项点击显示对应的操作 点击显示遮罩
     // 初始化加载列表
     obj.init();
@@ -125,7 +125,7 @@ $(function(){
 
     // 仓库选择
     $(".attribute").on("click"," li",function(){
-        $(this).addClass("select11").siblings().removeClass("select11");
+        
         var i = $(this).index();
         obj.selectCondition("attribute" , i);
         var data3;
@@ -305,7 +305,7 @@ var obj = {
     renderWarehouseType(data){
         var html = "";
         $.map(data,function(item,i){
-            html+="<li class='length-sel'>"+item+"</li>";
+            html+="<li class='mui-table-view-cell'>"+item+"</li>";
         });
         $("#warehouseType").html(html);
     },

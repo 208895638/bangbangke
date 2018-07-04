@@ -78,13 +78,12 @@
 					<div class="margin-r-10 font-l3-color">地<span class="perch">占位</span>址</div>
 					<div class="flex-auto font-l4-color" id="Warehouse_address">上海嘉定区宝安路</div>
 				</div>
-				<div class="map" id="map"></div>
+				<div class="map"></div>
 			</div>
 		</div>
 	</div>
 	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
-	<script src="http://api.map.baidu.com/api?v=2.0&ak=ys6CdKOxctibStahrEGIqxu1LC8pOMe3" type="text/javascript" charset="UTF-8"></script>
 	<script src="warehouseDetail.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

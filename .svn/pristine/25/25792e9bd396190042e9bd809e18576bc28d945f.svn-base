@@ -79,16 +79,4 @@ $(function(){
 			url:'../warehouse/warehouse.html'
 		});
 	});
-	//二手车
-	$("#secondHandleCar").on("click",function(){
-		mui.openWindow({
-			url:'../secondhandCar/secondhandCar.html'
-		});
-	});
-	//维修保养
-	$("#maintenance").on("click",function(){
-		mui.openWindow({
-			url:'../maintenance/maintenance.html'
-		});
-	});
 });

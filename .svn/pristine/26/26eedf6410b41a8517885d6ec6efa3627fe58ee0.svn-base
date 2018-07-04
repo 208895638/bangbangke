@@ -99,18 +99,6 @@
 	padding-top: 0.19rem;
 }
 
-.length-sel{
-	width: 0.72rem;
-    margin: 0.07rem;
-    height: 0.3rem;
-    line-height: 0.28rem;
-    text-align: center;
-    border: 1px solid #ededed;
-	border-radius: 0.03rem;
-	overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
 #province{
 	overflow-y: auto;
 }
