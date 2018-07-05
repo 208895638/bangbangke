@@ -1,0 +1,78 @@
+.box{
+    margin-top: 40px;
+}
+.box .per{
+    margin-right: .5rem;
+    text-align: center;
+    background: #fff;
+    z-index: 2
+}
+.step1Top{
+    position: relative;
+}
+.stepBox{
+    position: relative;
+}
+.line{
+    width: 100%;
+    height: .02rem;
+    background: #CCCCCC;
+    position: absolute;
+    top: .05rem;
+    left: 0;
+    z-index: 1;
+}
+.box .last{
+    margin-right: 0;
+}
+
+.box .per .step{
+    width: .14rem;
+    height: .14rem;
+    line-height: .14rem;
+    color: #fff;
+    background: #CCCCCC;
+    font-size: .12rem;
+    border-radius: .07rem;
+    margin: 0 auto;
+}
+.box .per .step img{
+    width: .14rem;
+    height: .14rem;
+    
+}
+.box .per .green{
+    background: #45C175;
+}
+.box .per .stepInfo{
+    margin-top: .04rem;
+}
+.box .result{
+    padding: .4rem 0;
+}
+.box .result img{
+    width: 1.56rem;
+    height: .99rem;
+}
+.box .result .resultC{
+    padding:0 .62rem;
+}
+.box .result .resultC dt{
+    font-size: .16rem;
+    color: #212121;
+}
+.box .result .resultC dd{
+    margin-left: 0;
+    font-size: .12rem;
+    color: #999999;
+}
+.nextStep{
+    position: fixed;
+    left: 0;
+    bottom: .1rem;
+    width: 100%;
+    z-index: 5;
+}
+.nextStep button{
+    width: 91%;
+}

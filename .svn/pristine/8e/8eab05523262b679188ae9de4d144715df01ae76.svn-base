@@ -53,7 +53,7 @@
 					<div>专线</div>
 				</div>
 			</div>
-			<div class="d-flex flex-column flex-auto justify-content-center selected" id="warehouse">
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop" id="warehouse">
 				<div class="font-l4-color">
 					<img src="../../static/images/cangku.png" />
 					<div>仓库</div>
@@ -73,13 +73,13 @@
 					<div>保险</div>
 				</div>
 			</div>
-			<div class="d-flex flex-column flex-auto justify-content-center selected" id="secondHandleCar">
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop" id="secondHandleCar">
 				<div class="font-l4-color">
 					<img src="../../static/images/ershouche.png" />
 					<div>二手车</div>
 				</div>
 			</div>
-			<div class="d-flex flex-column flex-auto justify-content-center selected " id="maintenance">
+			<div class="d-flex flex-column flex-auto justify-content-center selected develop" id="maintenance">
 				<div class="font-l4-color">
 					<img src="../../static/images/weixiu.png"/>
 					<div>维修保养</div>

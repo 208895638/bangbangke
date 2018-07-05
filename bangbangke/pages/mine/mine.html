@@ -21,27 +21,81 @@
     </script>
 </head>
 <body>
-	<header class="mui-bar mui-bar-nav">
-    <h1 class="mui-title">我的</h1>
-	</header>
-	<div style="line-height: 1;" class="mui-content position-relative bg-white margin-b-60 margin-a-15 font-size-20">
-		待开放...
+	<div id="app">
+		<header class="mui-bar mui-bar-nav d-flex align-items-center">
+			<img src="../../static/images/settings.png" alt="" class="userSettings">
+		</header>
+		<div class="userInfo d-flex align-items-center">
+			<div class="userInfoL">
+				<img src="../../static/images/company.png" alt="" >
+			</div>
+			<div class="userInfoR">
+				<div class="d-flex align-items-center">
+					<div class="userName">
+						冒烟烟
+					</div>
+					<div class="authentication on">
+						已认证
+					</div>
+				</div>
+				<div class="d-flex deal">
+					<div class="dealL">
+						交易成功<span>1</span>单
+					</div>
+					<div>
+						发货<span>1</span>单
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="userOptions d-flex justify-content-around">
+			<div class="per userAccount" @click="openWindow(0)">
+				我的账户
+			</div>
+			<div class="per carOwner" @click="openWindow(1)">
+				货主认证
+			</div>
+			<div class="per driver" @click="openWindow(2)">
+				司机认证
+			</div>
+			<div class="per option" @click="openWindow(3)">
+				意见反馈
+			</div>
+		</div>
+		<div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">常用工具</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">耗油记录</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">天气预报</a>
+				</li>
+			</ul>
+		</div>
+		<div style="line-height: 1;" class="mui-content position-relative bg-white margin-b-60 margin-a-15 font-size-20">
+			待开放...
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="home" class="mui-tab-item">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a id="order" class="mui-tab-item">
+				<span class="mui-icon mui-icon-phone"></span>
+				<span class="mui-tab-label">运单</span>
+			</a>
+			<a id="mine" class="mui-tab-item mui-active">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
 	</div>
-	<nav class="mui-bar mui-bar-tab">
-		<a id="home" class="mui-tab-item">
-			<span class="mui-icon mui-icon-home"></span>
-			<span class="mui-tab-label">首页</span>
-		</a>
-		<a id="order" class="mui-tab-item">
-			<span class="mui-icon mui-icon-phone"></span>
-			<span class="mui-tab-label">运单</span>
-		</a>
-		<a id="mine" class="mui-tab-item mui-active">
-			<span class="mui-icon mui-icon-email"></span>
-			<span class="mui-tab-label">我的</span>
-		</a>
-	</nav>
 	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/vue.js"></script>
 	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
 	<script src="mine.js" type="text/javascript" charset="utf-8"></script>
 </body>

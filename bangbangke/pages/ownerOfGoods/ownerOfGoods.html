@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>货主身份认证</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="ownerOfGoods.css"/>
+    <script>
+        
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="app">
+        <header id="head" class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
+            <h1 class="mui-title">货主身份认证</h1>
+        </header>
+		<div class="box">
+            <div class="step1" v-if="stepShow1">
+                <div class="step1Top d-flex justify-content-center padding-a-14">
+                    <div class="d-flex justify-content-center stepBox">
+                        <div class="per">
+                            <div class="step green">
+                                1
+                            </div>
+                            <div class="stepInfo">
+                                个人信息
+                            </div>
+                        </div>
+                        <div class="per">
+                            <div class="step">
+                                2
+                            </div>
+                            <div class="stepInfo">
+                                公司信息
+                            </div>
+                            
+                        </div>
+                        <div class="per last">
+                            <div class="step">
+                                3
+                            </div>
+                            <div class="stepInfo">
+                                完成
+                            </div>
+                        </div>
+                        <div class="line">
+                        </div>
+                    </div>
+                </div>
+                <form class="mui-input-group">
+                    <div class="mui-input-row d-flex align-items-center">
+                        <label>真实姓名</label>
+                        <input type="text" class="mui-input-clear" v-model.trim="username" placeholder="请输入真实姓名">
+                    </div>
+                    <div class="mui-input-row d-flex align-items-center">
+                        <label>身份证号</label>
+                        <input type="text" class="mui-input-clear" v-model.trim="idCard" placeholder="请输入18位身份证号码">
+                    </div>
+                    <div class="mui-button-row nextStep">
+                        <button type="button"  :class="addClass ? 'mui-btn-success' : ''" class="mui-btn" @click="nextStep1">下一步</button>
+                    </div>
+                </form>
+            </div>
+            <div class="step2" v-if="stepShow2">
+                <div class="step1Top d-flex justify-content-center padding-a-14">
+                    <div class="d-flex justify-content-center stepBox">
+                        <div class="per">
+                            <div class="step">
+                                <img src="../../static/images/true.png" alt="">
+                            </div>
+                            <div class="stepInfo">
+                                个人信息
+                            </div>
+                        </div>
+                        <div class="per">
+                            <div class="step green">
+                                2
+                            </div>
+                            <div class="stepInfo">
+                                公司信息
+                            </div>
+                            
+                        </div>
+                        <div class="per last">
+                            <div class="step">
+                                3
+                            </div>
+                            <div class="stepInfo">
+                                完成
+                            </div>
+                        </div>
+                        <div class="line">
+                        </div>
+                    </div>
+                </div>
+                <form class="mui-input-group">
+                    <div class="mui-input-row d-flex align-items-center">
+                        <label>公司名称</label>
+                        <input type="text" class="mui-input-clear" v-model.trim="companyName" placeholder="请输入公司名称">
+                    </div>
+                    <div class="mui-input-row d-flex align-items-center">
+                        <label>公司地址</label>
+                        <input type="text" class="mui-input-clear" v-model.trim="companyAddress" placeholder="请输入公司详细地址">
+                    </div>
+                    <div class="mui-button-row nextStep">
+                        <button type="button"  :class="addClass ? 'mui-btn-success' : ''" class="mui-btn" @click="nextStep2">提交</button>
+                    </div>
+                </form>
+            </div>
+            <div class="step3" v-if="stepShow3">
+                <div class="step1Top d-flex justify-content-center padding-a-14">
+                    <div class="d-flex justify-content-center stepBox">
+                        <div class="per">
+                            <div class="step">
+                                <img src="../../static/images/true.png" alt="">
+                            </div>
+                            <div class="stepInfo">
+                                个人信息
+                            </div>
+                        </div>
+                        <div class="per">
+                            <div class="step">
+                                <img src="../../static/images/true.png" alt="">
+                            </div>
+                            <div class="stepInfo">
+                                公司信息
+                            </div>
+                            
+                        </div>
+                        <div class="per last">
+                            <div class="step green">
+                                3
+                            </div>
+                            <div class="stepInfo">
+                                完成
+                            </div>
+                        </div>
+                        <div class="line">
+                        </div>
+                    </div>
+                </div>
+                <div class="result">
+                    <div class="resultT d-flex justify-content-center">
+                        <img src="../../static/images/cardon.png" alt="">
+                    </div>
+                    <dl class="resultC">
+                        <dt class="d-flex justify-content-center">
+                            您的申请已提交成功！
+                        </dt>
+                        <dd class="d-flex justify-content-center">
+                            文案信息文案信息文案信息文案信息文案信息文案信息文案信息
+                        </dd>
+                    </dl>
+                    <div class="mui-button-row nextStep goMine">
+                        <button type="button"  class="mui-btn mui-btn-success" @click="nextStep2">完成</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- <div style="line-height: 1;" class="mui-content position-relative bg-white margin-b-60 margin-a-15 font-size-20">
+			待开放...
+		</div> -->
+		
+	</div>
+	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/vue.js"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="ownerOfGoods.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+

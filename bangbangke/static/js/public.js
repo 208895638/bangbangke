@@ -1,7 +1,7 @@
 var basePath = "http://115.230.126.83:8082/";
 		basePath = "http://211.144.92.199:8081/";
 		basePath = "http://192.168.1.112:8089/";
-		 basePath = "https://bbk.benchensoft.com/";
+		  basePath = "https://bbk.benchensoft.com/";
 
 function getCode(){
 	

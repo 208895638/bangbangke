@@ -40,3 +40,75 @@
 	font-size: 0.15rem;
 	margin-top: 0.2rem;
 }
+.userSettings{
+	width: .17rem;
+	height: .17rem;
+}
+.userInfo{
+	margin-top: 40px;
+	padding: .2rem;
+	background: #212121;
+	position: relative;
+	z-index: 11;
+}
+.userInfo .userInfoL{
+	width: .5rem;
+	height: .5rem;
+	border-radius: .5rem;
+	margin-right: .17rem;
+	overflow: hidden;
+}
+.userInfo .userInfoL img{
+	width: .5rem;
+	height: .5rem;
+}
+.userInfo .userInfoR .userName{
+	font-size: .16rem;
+	color: #fff;
+	margin-right: .1rem;
+
+}
+.userInfo .userInfoR .authentication{
+	padding:.02rem .06rem;
+	border-radius: .22rem;
+	background: rgba(255,255,255,0.10);
+	color: red;
+	font-size: .12rem;
+}
+.userInfo .userInfoR .on{
+	color: #45C175;
+}
+.userInfo .userInfoR .deal{
+	font-size: .12rem;
+	color: #fff;
+	margin-top: .13rem;
+}
+.userInfo .userInfoR .deal span{
+	margin-left: .16rem;
+}
+.userInfo .userInfoR .deal .dealL{
+	padding-right: .15rem;
+	margin-right: .15rem;
+	border-right: 1px solid #FFFFFF;
+}
+.userOptions{
+	padding: .2rem 0;
+	border-bottom: .1rem solid #F5F5F5;
+}
+
+.userOptions .userAccount{
+	background: url(../../static/images/useraccount.png) no-repeat center top;
+}
+.userOptions .carOwner{
+	background: url(../../static/images/huozhu.png) no-repeat center top;
+}
+.userOptions .driver{
+	background: url(../../static/images/carer.png) no-repeat center top;
+}
+.userOptions .option{
+	background: url(../../static/images/option.png) no-repeat center top;
+}
+.userOptions .per{
+	padding-top: .3rem;
+	background-size: .2rem;
+}

@@ -34,11 +34,11 @@
 			  </div>
 			</div>
 		</div>
-		<div class="d-flex bg-white margin-t-30 font-size-16">
+		<div class="d-flex bg-white margin-t-30">
 			<div id="goods" class="d-flex flex-column flex-auto justify-content-center selected">
 				<div class="font-l4-color">
 					<img src="../../static/images/huoyuan.png" />
-					<div>发货找货</div>
+					<div>货源</div>
 				</div>
 			</div>
 			<div id="cars"class="d-flex flex-column flex-auto justify-content-center selected">
@@ -66,7 +66,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="d-flex bg-white margin-t-30 margin-b-40  font-size-16">
+		<div class="d-flex bg-white margin-t-30 margin-b-40">
 			<div class="d-flex flex-column flex-auto justify-content-center selected develop">
 				<div class="font-l4-color">
 					<img src="../../static/images/baoxian.png"/>
@@ -99,22 +99,25 @@
 			</div>
 		</div>
 		<div class="bg-l1 padding-a-5"></div>
-		<div id="advert" class="d-flex flex-wrap margin-l-5 margin-r-5 margin-t-10 margin-b-10">
-			
+		<div class="d-flex flex-wrap margin-l-5 margin-r-5 margin-t-10 margin-b-10">
+			<div class="content-img1 margin-a-5"></div>
+			<div class="content-img2 margin-a-5"></div>
+			<div class="content-img3 margin-a-5"></div>
+			<div class="content-img4 margin-a-5"></div>
 		</div>
 	</div>
 	<nav class="mui-bar mui-bar-tab">
 		<a id="home" class="mui-tab-item mui-active">
-			<span class="onhome-icon mui-icon"></span>
-			<span style="font-size: 0.16rem;" class="mui-tab-label">首页</span>
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
 		</a>
 		<a id="order" class="mui-tab-item">
-			<span class="mui-icon offorder-icon"></span>
-			<span style="font-size: 0.16rem;" class="mui-tab-label">运单</span>
+			<span class="mui-icon mui-icon-phone"></span>
+			<span class="mui-tab-label">运单</span>
 		</a>
 		<a id="mine" class="mui-tab-item">
-			<span class="mui-icon offmine-icon"></span>
-			<span style="font-size: 0.16rem;" class="mui-tab-label">我的</span>
+			<span class="mui-icon mui-icon-email"></span>
+			<span class="mui-tab-label">我的</span>
 		</a>
 	</nav>
 	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
