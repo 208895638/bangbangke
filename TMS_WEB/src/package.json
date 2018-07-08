@@ -1,0 +1,16 @@
+{
+  "name": "tms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server:start": "fis3 server start --root ../dist --port 7788",
+    "server:stop": "fis3 server stop --port 7788",
+    "build:dev": "fis3 release dev -d ../dist",
+    "build:watch": "fis3 release dev -cwL ../dist",
+    "build:prd": "fis3 server clean && fis3 release prod  -d ../dist"
+  },
+  "author": "",
+  "license": "ISC"
+}

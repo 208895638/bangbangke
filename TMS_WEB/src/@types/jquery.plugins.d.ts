@@ -1,0 +1,301 @@
+interface BindOption {
+	list ?: Array;
+	template ?: string;
+	storeData ?: boolean;
+	itemRender ?: any;
+	itemFilter ?: Function;
+	onBound ?: Function;
+}
+
+interface Pagination {
+	append_number_input: JQuery | boolean;
+	pageNo: number;
+	pageSize: number;
+	current_page: number;
+	items_per_page: number;
+	customizable: boolean | Array;
+	showCount: boolean | string;
+}
+
+interface JQuery {
+	bindList(target: any): JQuery;
+
+	fieldsToJson(rules?: any): any;
+
+	jsonToFields(obj: any): any;
+
+	decimalMask(mask: string): JQuery;
+
+	iptError(sets: string | Function): any;
+
+	resizableColumns(sets: any): any;
+
+	syncCheckBoxGroup(select: any, context: any): any
+
+	checkBoxAll(select: any, context: any): any
+
+	pagination(count: number, sets: any): any
+
+	datetimepicker(sets: any): JQuery
+
+}
+
+interface JqDatetimePicker {
+	setLocale(name: string);
+}
+
+interface JQueryStatic {
+	detectIE(): number;
+
+	datetimepicker: JqDatetimePicker;
+
+	escapeSelector(selector: string | number): string;
+}
+
+
+interface IOpgUi {
+	jq: JQuery;
+
+	table(cfg: any)
+
+	tree(cfg: any)
+
+	listBox(cfg: any)
+
+	checkBox(cfg: any)
+
+	radioBox(cfg: any)
+
+	panel(cfg: any)
+
+	tabView(cfg: any)
+
+	popup(cfg: any)
+}
+
+interface OpgStatic {
+	(se: JQuery | any[] | Element | DocumentFragment | Text | string): IOpgUi;
+
+	api: any;
+
+	request: HashMap<string>;
+
+	dateTime: {
+		addSeconds(d: Date, s: number): Date,
+		addDays(d: Date, s: number): Date,
+		daySpan(dateFrom: Date, dateTo: Date): Date,
+		weekSpan(dateFrom: Date, dateTo: Date): Date,
+	};
+
+	string: {
+		pad(input: string, result_full_length: number, pad_string: string, pad_type: 'STR_PAD_LEFT' | 'STR_PAD_BOTH' | 'STR_PAD_RIGHT'): string,
+		padLeft(oStr: string, result_full_length: number, pad_string: string = '0'): string,
+		padRight(oStr: string, result_full_length: number, pad_string: string = '0'): string,
+	};
+
+	is: {
+		Array(obj: Object): boolean,
+		RegExp(obj: Object): boolean,
+		Date(obj: Object): boolean,
+		Number(obj: Object): boolean,
+		String(obj: Object): boolean,
+		Object(obj: Object): boolean,
+		HTMLDocument(obj: Object): boolean,
+		UsingIE: number, /// not ie => 0 , ie => 6~11 , edge => 12+
+	};
+
+	url: any;
+
+	convert: {
+		arrayToHash(arr: Array, keyName: string): Object,
+		hashToArray(obj: Object, converter?: Function): Array,
+		hashKeysToArray(obj: Object): Array,
+		stringToDate(dateStr: string, formater?: string): Date,
+		secondsToTimecode(totalSeconds: number): string,
+	};
+	format: {
+		date(date: Date, format: string): string,
+		fileSize(size: number): string,
+		number (number, decimals, dec_point?, thousands_sep?): string,
+		json(template: string, json: any): string,
+		timeLength(seconds: number): string,
+	};
+
+	array: {
+		sort(arr: Array, sortPropName: string, sortCompareFunction?: Function): Array,
+		combine (...arrays: Array[]): Array,
+		unique (arr: Array): Array,
+	};
+
+
+	wrapPanel(selector, cfg);
+
+	alert(message, callback?: Function, options?: any);
+
+	confirm(message, callback?: Function, options?: any);
+
+	popTop(iframe: JQuery | HTMLIFrameElement | string, options);
+
+	ok (message, callBack?: Function, options ?: any): void;
+
+	err (message, callBack?: Function, options ?: any): void;
+
+	warn (message, callBack?: Function, options ?: any): void;
+
+	danger (message, callBack?: Function, options ?: any): void;
+
+	listen (events: string, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): void;
+
+	unListen (): void;
+
+	dispatch (eventType: string, extraParameters?: any[] | Object): void;
+}
+
+interface Window {
+	CONFIG: any;
+	opg: OpgStatic;
+
+	__uri(path: string): string
+}
+
+
+interface Node {
+	requestFullscreen(): void;
+
+	cancelFullScreen(): void;
+
+	msFullscreenElement(): void;
+
+	msRequestFullscreen(): void;
+
+	mozRequestFullScreen(): void;
+
+	webkitRequestFullscreen(): void;
+}
+
+interface Document {
+	fullScreenElement: Element;
+
+	cancelFullScreen(): void;
+
+	msFullscreenElement: Element;
+
+	msExitFullscreen(): void;
+
+	mozFullScreenElement: Element;
+
+	mozCancelFullScreen(): void;
+}
+
+interface HTMLElement {
+	msRequestFullscreen(): void;
+
+	mozRequestFullScreen(): void;
+}
+
+interface plyrStatic {
+	setup(selector: string, options?: any): plyrPlayer[];
+
+	get(selector: string): plyrPlayer[];
+}
+
+interface plyrPlayer {
+
+	source(options: any): void;
+
+	on(evtName: string, callback: Function): void;
+
+	off(evtName: string, callback: Function): void;
+
+	play(): void;
+
+	pause(): void;
+
+	stop(): void;
+
+	restart(): void;
+
+	seek(time: number): void;
+
+	forward(time?: number = 10): void;
+
+	rewind(time?: number = 10): void;
+
+	getCurrentTime(): number;
+
+	getDuration(): number;
+
+	isPaused(): boolean
+}
+
+
+interface FisUri {
+	(uri: string): string
+}
+
+
+interface UEditor {
+	getContent(): string;
+	setContent(str:string);
+	destroy()
+}
+
+interface UEditorStatic {
+	getEditor(idOrDom: string | HTMLElement, opt?: any): UEditor;
+}
+
+declare let __uri: FisUri;
+declare let plyr: plyrStatic;
+
+declare let opg: OpgStatic;
+
+declare let UE: UEditorStatic;
+
+
+interface CompiledTemplate {
+	(data: any): string;
+}
+
+interface Template {
+	(id: string, data: any): string;
+
+	compile(tpl: string): CompiledTemplate;
+
+	render(source: string, data: any, options: any): string;
+
+	defaults :any;
+}
+
+declare let template: Template;
+
+
+declare class Swiper {
+	constructor(select: string, sets?: any);
+	removeSlide(index : number);
+	realIndex : number;
+}
+
+interface AuiDialog{
+	show(dom: HTMLElement);
+	close(val?:any);
+}
+interface AuiDialogFactory {
+	(cfg?: any);
+	get(dialogId:string): AuiDialog;
+}
+
+declare let dialog: AuiDialogFactory;
+
+
+
+interface MakePy {
+	(str: string): string[]
+}
+
+declare let makePy: MakePy;
+
+
+
+
+
+

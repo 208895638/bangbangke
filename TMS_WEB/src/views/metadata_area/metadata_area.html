@@ -1,0 +1,61 @@
+{{extend '/comm/layout.html'}}
+
+{{block 'pageHeader'}}
+<button class="btn btn-default btn-sm" id="Add" type="submit">新增</button>
+<button class="btn btn-default btn-sm " type="submit">修改</button>
+<a class="btn btn-default btn-sm " href="#" role="button">保存</a>
+<button class="btn btn-default btn-sm " type="submit">删除</button>
+<button class="btn btn-default btn-sm " type="submit">复制新增</button>
+{{/block}}
+
+
+{{block 'content'}}
+<div class="row">
+    <div class="col-xs-3 col-md-3">区域列表</div>
+    <div class="col-xs-9 col-md-9">
+        <form class="form-inline" id="Addform" >
+
+            <div class="row">
+                <div class="col-xs-6 col-md-4">
+                    <label>区域代码</label>
+                    <input type="text" id="area_code" name="area_code" class="form-control" placeholder="公司代码">
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <label>区域名称</label>
+                    <input type="text" id="area_name" name="area_name" class="form-control">
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-xs-6 col-md-4">
+                    <label>区域类型</label>
+                    <input type="text" id="area_type" name="area_type" class="form-control">
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <label>上级区域</label>
+                    <input type="text" id="parent_area_id" name="contact_phone" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-6 col-md-4">
+                    <label>经  度</label>
+                    <input type="text" id="area_lng" name="area_lng" class="form-control" placeholder="省">
+                   
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <label>纬  度</label>
+                    <input type="text" id="area_lat" name="area_lat" class="form-control">
+                </div>
+            </div>
+            <br>
+ 
+        </form>
+        <br>
+    
+    </div>
+</div>
+{{/block}}
+
+

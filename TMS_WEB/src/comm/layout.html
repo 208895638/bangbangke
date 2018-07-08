@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit">
+    <title>TMS</title>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/lib/jqgrid/ui.jqgrid-bootstrap.css" rel="stylesheet">
+    <link href="/lib/bootstrapValidator/css/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="/css/ams.scss" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+    <!--STYLE_PLACEHOLDER-->
+    {{block 'pageHeader'}}{{/block}}
+</head>
+<body>
+
+{{block 'content'}}{{/block}}
+
+<div style="padding: 10px 10px 0;">
+    {{block 'tabContent'}}{{/block}}
+</div>
+<div id="opgAjaxLoading">
+    <div id="opgAjaxLoadingText">
+        <div id="square-spin"></div>
+        loading ...
+    </div>
+</div>
+
+<script src="/lib/mod.js"></script><!--ignore-->
+<script src="/lib/jquery-3.2.1.js"></script><!--ignore-->
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script><!--ignore-->
+<script src="/lib/bootstrapValidator/js/bootstrapValidator.min.js"></script><!--ignore-->
+<script src="/js/jquery.plugins.js"></script><!--ignore-->
+<script src="/lib/jqgrid/jquery.jqGrid.min.js"></script><!--ignore-->
+<script src="/lib/jqgrid/grid.locale-cn.js"></script><!--ignore-->
+<script src="/lib/jqgrid/jquery.jqGrid.extend.js"></script><!--ignore-->
+<script src="/lib/template-web.js"></script><!--ignore-->
+
+{{if scripts}}
+{{each scripts}}
+<script src="{{$value}}"></script>
+{{/each}}
+{{/if}}
+
+<!--SCRIPT_PLACEHOLDER-->
+<script>
+    !function() {
+        $.jgrid.defaults.styleUI = 'Bootstrap';
+        var Languages = require('ts/util/Languages').Languages;
+        Languages.init({}, function(lngPackage) {
+            var templateElem = document.getElementById('tpl-mainSection');
+            var mainSection = document.getElementById('mainSection');
+            if (mainSection && templateElem) {
+                document.getElementById('mainSection').innerHTML = template('tpl-mainSection', lngPackage);
+            }
+
+            $('.templateContainer').each(function(index, elem) {
+                var tmpl = $('script', this).html();
+                var render = template.compile(tmpl);
+                elem.innerHTML = render(lngPackage);
+            });
+
+        });
+        require('{{$file.filename}}');
+    }();
+</script>
+
+{{block 'pageScripts'}}
+
+{{/block}}
+</body>
+</html>

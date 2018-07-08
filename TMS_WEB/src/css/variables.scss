@@ -1,0 +1,35 @@
+$gray-darker: lighten(#000, 13.5%);
+$gray-dark: lighten(#000, 20%);
+$gray: lighten(#000, 33.5%);
+$gray-light: lighten(#000, 60%);
+$gray-lighter: lighten(#000, 93.5%);
+$gray-lightest: lighten(#000, 97.25%);
+$brand-primary: #428bca;
+$brand-success: #5cb85c;
+$brand-info: #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger: #d9534f;
+
+$navbar-bg: #167BE0;
+$navbar-color: #FFFFFF;
+$sidebar-bg: #f7fafc;
+$sidebar-color: #444;
+$sidebar-hover-color: #4a90e2;
+$sidebar-hover-bg: #eee;
+
+$--color-white: #fff !default;
+$--color-primary: #409EFF !default;
+$--color-text-primary: #303133 !default;
+$--color-text-secondary: #909399 !default;
+$--color-text-placeholder: #c0c4cc !default;
+$--disabled-color-base: $--color-text-placeholder !default;
+$--background-color-base: #f5f7fa !default;
+
+$--index-normal: 1 !default;
+$--border-color-base: #dcdfe6 !default;
+$--border-color-light: #e4e7ed !default;
+$--border-color-lighter: #ebeef5 !default;
+$--checkbox-disabled-input-fill: #edf2fc !default;
+$--checkbox-disabled-color: #cccccc !default;
+$--input-disabled-color: $--disabled-color-base !default;
+

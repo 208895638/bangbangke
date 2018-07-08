@@ -1,0 +1,108 @@
+{{extend '/comm/layout.html'}}
+
+{{block 'pageHeader'}}
+
+<link href="/lib/metisMenu/metisMenu.min.css" rel="stylesheet">
+<script src="/lib/metisMenu/metisMenu.min.js"></script>
+
+{{/block}}
+
+{{block 'content'}}
+<link rel="stylesheet" href="./assets/main.scss">
+<div id="wrapper" class="in">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/views/main/main.html">TMS</a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right in">
+            <li class="dropdown">
+                <a class="dropdown-toggle active" data-toggle="dropdown" href="#">
+                    <span id="curSelOrg"></span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts in" id="orgList">
+                    <script type="text/html" id="orgTpl">
+                        <% for (let i=0;i<$data.length;i++) { %>
+                        <% let org = $data[i] %>
+                        <li>
+                            <a href="#" orgId="<%=org.org_id%>" orgCode="<%=org.org_code%>"><i class="fa"></i><%=org.org_name%></a>
+                        </li>
+                        <%}%>
+                    </script>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle active" data-toggle="dropdown" href="#">
+                    <span id="username"></span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user in">
+                    <li>
+                        <a href="#" id="logout"><i class="fa fa-sign-out fa-fw"></i>注销</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse" id="sidebar-menu-content">
+                <script id="menuTpl" type="text/html">
+                    <ul class="metismenu" id="sidebar-menu">
+                        <% for (let i=0;i<$data.length;i++) { %>
+                        <% let menu = $data[i] %>
+                        <% let isSubMenu = menu.children.length >0 %>
+                        <li>
+                            <% if (isSubMenu) { %>
+                            <a class="has-arrow" href="#" sidebarId="<%='sidebar-'+menu.moduleId%>">
+                                <%=menu.moduleName%>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <% include('subMenuTpl',menu.children) %>
+                            <% } else { %>
+                            <a href="javascript:void(0);" url="<%=menu.moduleUrl%>" sidebarId="sidebar-<%=menu.moduleId%>">
+                                <%=menu.moduleName%>
+                            </a>
+                            <% } %>
+                        </li>
+                        <% } %>
+                    </ul>
+                </script>
+
+                <script id="subMenuTpl" type="text/html">
+                    <ul class="collapse">
+                        <% for (let i=0;i<$data.length;i++) { %>
+                        <% let menu = $data[i] %>
+                        <% let isSubMenu = menu.children.length >0 %>
+                        <li>
+                            <% if (isSubMenu) { %>
+                            <a class="has-arrow" href="#" sidebarId="<%='sidebar-'+menu.moduleId%>">
+                                <%=menu.moduleName%>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <% include('subMenuTpl',menu.children) %>
+                            <% } else { %>
+                            <a href="javascript:void(0);" url="<%=menu.moduleUrl%>" sidebarId="<%='sidebar-'+menu.moduleId%>">
+                                <%=menu.moduleName%>
+                            </a>
+                            <% } %>
+                        </li>
+                        <% } %>
+                    </ul>
+                </script>
+            </div>
+        </div>
+    </nav>
+
+    <div id="page-wrapper">
+    </div>
+</div>
+{{/block}}
+
+

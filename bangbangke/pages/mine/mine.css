@@ -112,3 +112,8 @@
 	padding-top: .3rem;
 	background-size: .2rem;
 }
+.order-bottom{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}

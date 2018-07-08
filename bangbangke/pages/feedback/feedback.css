@@ -1,0 +1,69 @@
+#head{
+    position: relative;
+}
+#head .addIdea{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: .14rem;
+    margin: auto;
+    font-size: .14rem;
+    color: #45C175;
+    line-height: 40px;
+}
+.noResult{
+    padding: .6rem .2rem 0 0.2rem;
+}
+.noResult dl dt img{
+    height: .92rem
+}
+.noResult dl dd{
+    margin-left: 0;
+    font-size: .12rem;
+    margin-top: .2rem;
+    color: #999999;
+}
+.addSuggestion {
+    padding: .16rem .14rem;
+    border-bottom: 1px solid #E7E7E7;
+}
+.addSuggestion textarea{
+    width: 100%!important;
+    border: none;
+    
+}
+.nextStep{
+    position: fixed;
+    left: 0;
+    bottom: .1rem;
+    width: 100%;
+}
+.nextStep button{
+    /* background: #D8D8D8; */
+    width: 91%;
+    /* color: #fff; */
+}
+/* .resultMessage ul li{
+    margin-top: .1rem;
+    padding: .15rem .14rem;
+    background: #fff;
+} */
+.color-9{
+    color: #999;
+}
+.color-7{
+    color: #777;
+}
+/* .resultMessage ul li .mySuggest{
+    font-size: .14rem;
+    padding-left: .2rem;
+    background: url(../../static/images/message.png) no-repeat left center;
+    background-size: .15rem;
+}
+.resultMessage ul li .resultC{
+    padding: .06rem 0;
+}
+.resultMessage ul li .resultB{
+    padding-top: .06rem;
+    border-top: 1px solid #E7E7E7;
+} */

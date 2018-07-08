@@ -246,11 +246,16 @@ var obj = {
         $("#list").html(html);
     },
     filterOptions(str){  //筛选获取的结果
+        
         mui.ajax({
             url:basePath+"api/Warehouse/WarehouseWhere",
             // headers:{'Authorization':token},
             contentType: "application/json",
-            data: str,
+            data: {
+                "title": "",
+                "warehouse_area": $("#area span").html() == "全国" ? "" : $("#area span").html(),
+                "warehouse_type": $("#wareHouseType span").html() == "属性不限" ? "" : $("#wareHouseType span").html()
+            },
             async: true ,
             dataType: 'json',
             type: 'post',

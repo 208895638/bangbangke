@@ -1,0 +1,20 @@
+{{extend '/comm/layout.html'}}
+
+{{block 'pageHeader'}}
+<link rel="stylesheet" href="/lib/ztree/css/metroStyle.css">
+<script src="/lib/ztree/js/jquery.ztree.core.min.js"></script>
+<script src="/lib/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+{{/block}}
+
+{{block 'tabContent'}}
+<div class="row">
+    <div class="col-md-3">
+        <ul id="moduleTree" class="ztree"></ul>
+    </div>
+    <div class="col-md-9">
+        <table id="functionGrid"></table>
+    </div>
+</div>
+{{/block}}
+
+

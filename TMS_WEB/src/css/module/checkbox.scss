@@ -1,0 +1,47 @@
+@import "../mixins";
+@import "../variables";
+
+@include b(checkbox) {
+  $selector: &;
+  $label: #{$B + $t-separator + 'label'};
+  display: inline-block;
+  margin: 5px 5px 0 0;
+  cursor: pointer;
+
+  @include e(inner) {
+    display: none;
+    &:checked {
+      + .#{$label}:after {
+        // background-color: $--color-primary;
+        content: "\f00c";
+        display: inline-block;
+        color: $--color-primary;
+      }
+    }
+  }
+
+  .#{$label} {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    height: 16px;
+    margin-right: 10px;
+    margin-top: -2px;
+    vertical-align: middle;
+    width: 16px;
+    line-height: 1;
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    border-color: $--border-color-lighter;
+
+    & .#{$label} {
+      background-color: $--checkbox-disabled-input-fill;
+      &:after {
+        background-color: $--input-disabled-color;
+        color: $--checkbox-disabled-color;
+      }
+    }
+  }
+}

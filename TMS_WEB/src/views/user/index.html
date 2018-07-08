@@ -1,0 +1,61 @@
+{{extend '/comm/layout.html'}}
+
+{{block 'pageHeader'}}
+
+{{/block}}
+
+{{block 'tabContent'}}
+<link rel="stylesheet" href="./assets/index.scss">
+<div id="userSearchPanel"></div>
+<div id="userGridWrapper">
+    <table id="userGrid"></table>
+    <div id="userGridPager"></div>
+</div>
+
+<script type="text/html" id="userAddFormTpl">
+    <div class="row">
+        <div class="col-lg-12">
+            <form id="userForm" method="post" class="form-horizontal" action="#">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">帐户</label>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control" name="account" id="account" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">显示名</label>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control" name="displayName" id="displayName" placeholder="">
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <label class="col-lg-2 control-label">公司</label>
+                    <div class="col-lg-9" id="orgs"></div>
+                </div>-->
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">公司</label>
+                    <div class="col-lg-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="orgs" id="orgs" readonly
+                                   placeholder="" value="">
+                            <span class="input-group-btn">
+                       <button class="btn btn-default" type="button" id="btnChooseOrgs">选择</button>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">角色</label>
+                    <div class="col-lg-9" id="role"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">状态</label>
+                    <div class="col-lg-9" id="disabled"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
+{{/block}}
+
+

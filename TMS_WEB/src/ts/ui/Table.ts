@@ -1,0 +1,454 @@
+import {AjaxDisplayObject, DisplayObject} from './DisplayOject';
+import {Languages} from 'ts/util/Languages';
+
+
+let jsonFormat = (function () {
+	let pattern = /\${(\w+[.]*\w*)\}(?!})/g;
+
+	return function (template: string, json: any) {
+		return template.replace(pattern, function (match, key, value) {
+			return json[key];
+		});
+	};
+})();
+
+function makeTemplate(sets) {
+
+	let tdTmp = [], render, name, i = 0, l = sets.columns ? sets.columns.length : 0;
+	for (let col; i < l , col = sets.columns[i]; i++) {
+
+		if (typeof col.render === 'function') {
+			name = col.src + '_render' + DisplayObject.guid();
+			render = ':=' + name;
+			sets.bindOptions.itemRender[name] = col.render;
+		}
+		else render = '';
+
+		if (col.cmd) {
+
+			if (col.cmd === 'checkAll') {
+				tdTmp[i] = '<td class="text-center"><input type="checkbox" name="chk_' + i + '" value="${' + col.src + render + '}"></td>';
+			}
+			else {
+				tdTmp[i] = '<td class="text-center"><input type="radio" name="chk_' + i + '" value="${' + col.src + render + '}"></td>';
+			}
+
+			if (!this.cmd) {
+				this.cmd = col.cmd;
+				this.cmdColumnIndex = i;
+			}
+		}
+		else {
+
+			let classAlign = "text-" + (col.align ? col.align.toLowerCase() : "center");
+
+			tdTmp[i] = '<td class="' + classAlign + '">${' + col.src + render + '}</td>';
+		}
+	}
+
+	//console.log('<tr>' + tdTmp.join('') + '</tr>');
+	let trSrc;
+	if (sets.rows && sets.rows.render) {
+		trSrc = sets.rows.src || '___';
+		sets.bindOptions.itemRender['__renderTr'] = (val, i, row, attr) => {
+			let cn = sets.rows.render(val, i, row, attr) || '';
+			let sn = (i % 2 ? 'odd' : 'even');
+			return sn + ' ' + cn;
+		}
+	}
+	else {
+		trSrc = '___';
+		sets.bindOptions.itemRender['__renderTr'] = (val, i) => (i % 2 ? 'odd' : 'even');
+	}
+
+	return '<tr class="${' + trSrc + ':=__renderTr}">' + tdTmp.join('') + '</tr>';
+
+}
+
+
+function makeTbStructor(tb, sets) {
+	let i = 0, l = sets.columns ? sets.columns.length : 0, colCss = [], th = [];
+	for (let col; col = sets.columns[i]; i++) {
+		if (col.cmd) {
+			col.width = col.width || 32;
+
+			if (col.cmd === 'checkAll')
+				col.text = '<input type="checkbox" name="' + col.src + '" value="chk_' + i + '">';
+			else
+				col.text = '<input type="hidden" name="' + col.src + '" value="chk_' + i + '">';
+		}
+
+		colCss[i] = "width:" + (col.width ? col.width + "px;" : "auto; ");
+		th[i] = '<th style="' + colCss[i] + '">' + (col.text || 'column_' + i) + '</th>';
+	}
+	let thead = '<thead><tr>' + th.join('') + '</tr></thead>';
+
+
+	if (sets.fixFooter) {
+		let tfoot = (sets.pagination) ? '<div class="gridPaginationFooter"></div>' : '';
+		tb.prepend(thead + '<tbody id="' + tb[0].id + '_tbody"></tbody>').after(tfoot);
+		let $by = $(document.body), $win = $(window);
+
+
+		function positionFooter() {
+			let $tf = $('.gridPaginationFooter');
+
+			let wh = $win.height();
+			let dh = $tf.offset().top + $tf.outerHeight() - wh ;
+			let dw = tb.width() ;
+
+			if($win.scrollTop() > dh) {
+				$tf.css({position: "fixed", bottom: 0 , width: dw+'px'});
+			}
+			else {
+				$tf.css({position: "static"});
+			}
+			//console.log(dh , wh , $by.height() , $win.height() , $win.scrollTop() , $tf , $tf.offset().top , $tf.outerHeight())
+		}
+
+		$win.scroll(positionFooter).resize(positionFooter);
+	}
+	else {
+		let tfoot = (sets.pagination) ? '<tfoot><tr><td colspan="' + (l || '1') + '"></td></tr></tfoot>' : '';
+		tb.prepend(thead + '<tbody id="' + tb[0].id + '_tbody"></tbody>' + tfoot);
+	}
+
+}
+
+function setupTitleBar(tb, sets) {
+	let html = `<div class="grid-title-bar">
+		${sets.title}
+	</div>`, bar = $(html);
+
+	let btns = ``;
+	if (sets.buttons && sets.buttons.length) {
+		for (let i = 0, l = sets.buttons.length; i < l; i++) {
+			let btn = sets.buttons[i];
+			btns += `<button id="${btn.id}" class="${btn.className}">${btn.html}</button>`;
+		}
+
+		bar.append(btns);
+	}
+
+	tb.before(bar);
+}
+
+
+class Table extends AjaxDisplayObject {
+
+	table: JQuery;
+	thead: JQuery;
+	tbody: JQuery;
+	tfoot?: JQuery;
+	tPager?: JQuery;
+	pageCounter?: JQuery;
+	iptPageGo?: JQuery;
+
+	cols: number;
+
+	resizable?: boolean;
+
+	cmd?: 'checkOne' | 'checkAll';
+	cmdColumnIndex?: number;
+	cmdCheckAll?: JQuery;
+	cmdCheckOne?: JQuery;
+
+	pageTemplate?: string;
+	pagination?: Pagination;
+
+
+	fetching: boolean;
+
+	private pageCount: number;
+	private fixFooter: boolean;
+
+	constructor(jq: JQuery, cfg: any) {
+
+		cfg = $.extend({
+			bindOptions: {
+				itemRender: {}
+			},
+			resizable: true
+		}, cfg);
+
+
+		super(jq, cfg);
+
+	}
+
+	init(jq: JQuery, cfg: any) {
+
+		super.init(jq, cfg);
+
+		let isTable = jq[0].tagName === 'TABLE';
+
+		if (isTable) {
+			jq.addClass("grid");
+			this.table = jq;
+		}
+		else {
+			this.table = $('<table id="' + jq[0].id + '_table" class="grid"></table>');
+		}
+
+
+		this.fetching = false;
+		this.resizable = cfg.resizable;
+
+		this._bindOption.template = makeTemplate.call(this, cfg);
+
+
+		makeTbStructor(this.table, cfg);
+
+		if (cfg.titleBar) setupTitleBar(this.table, cfg.titleBar);
+
+
+		if (!isTable) jq.append(this.table);
+
+		this.thead = this.table.find("thead");
+		this.cols = cfg.columns.length;
+		this.tbody = this.table.find("tbody");
+		this.container = this.tbody;
+
+
+		this.tbody.on('click', 'tr', (evt) => {
+			//log($(evt.currentTarget).parents("tr")[0].rowIndex);
+			this.selectHandler(evt);
+		});
+
+
+		if (this.resizable) {
+			this.table.resizableColumns({//refreshHeaders
+				minWidth: 1
+			});
+		}
+
+
+		if (cfg.pagination) {
+
+			this.fixFooter = !!(cfg.fixFooter);
+
+			let that = this;
+			const pageDefaults = {
+				append_number_input: true,
+				link_to: "javascript:void(0)",
+				num_edge_entries: 1,
+				num_display_entries: 5,
+				items_per_page: 10,
+				prev_text: "&laquo;",
+				next_text: "&raquo;",
+				load_first_page: false,
+				callback: (pageIndex, paginationContainer) => {
+					that._param.pageIndex = pageIndex;
+					that.update(this._param);
+					//that.iptPageGo.val(that._param.pageNo);
+					return false;
+				},
+				pageSize: 10,
+				showCount: true,
+				customizable: true,
+			};
+
+
+			if (cfg.pagination.pageSize)
+				cfg.pagination.items_per_page = cfg.pagination.pageSize;
+
+			cfg.pagination = $.extend(pageDefaults, cfg.pagination);
+
+
+			this.pagination = cfg.pagination;
+
+			this._param = $.extend({
+				pageIndex: 0,
+				pageSize: cfg.pagination.pageSize
+			}, cfg.param);
+		}
+
+	}
+
+	createdHandler(data: any) {
+		if (this.cmd === 'checkAll') {
+			this.cmdCheckAll = this.thead.find('th:eq(' + this.cmdColumnIndex + ')').find('input');
+			this.cmdCheckAll.syncCheckBoxGroup('td:eq(' + this.cmdColumnIndex + ')>:checkbox:enabled', this.tbody.find('tr'));
+		}
+		else if (this.cmd === 'checkOne') {
+			this.cmdCheckOne = this.thead.find('th:eq(' + this.cmdColumnIndex + ')').find('input:hidden');
+		}
+
+
+		this._created = true;
+
+		if (this._createdPromise) {
+			this._createdPromise.resolve();
+		}
+		if (this.onCreate) this.onCreate(data);
+	}
+
+	bindHandler(json) {
+		if (this.pagination) {
+			this.makePager(~~json.totalRecord);
+		}
+		if (typeof this.onBind === 'function') this.onBind(json);
+	}
+
+	updateHandler(json) {
+		if (this.cmdCheckAll) {
+			this.cmdCheckAll.prop("checked", false);
+			this.cmdCheckAll.syncCheckBoxGroup('td:eq(' + this.cmdColumnIndex + ')>:checkbox:enabled', this.tbody.find('tr'));
+		}
+
+
+		if ($.isFunction(this.onUpdate))
+			this.onUpdate(json);
+
+
+		return this;
+	}
+
+	//分页
+	makePager(rowCount) {
+
+		let that = this;
+
+		let pageCount = Math.ceil(rowCount / this._param.pageSize);
+		if (pageCount === 0) pageCount = 1;
+
+		//console.log(this._param , pageCount , this.pageCount , this.fetching);
+		if (this._param.pageIndex > 0 && pageCount < this.pageCount) {
+			if (this.fetching)
+				this.fetching = false;
+			else {
+				this.fetching = true;
+				this._param.pageIndex -= (this.pageCount - pageCount) - 1;
+				return setTimeout(() => this.update(), 0);
+			}
+		}
+
+
+		this.pageCount = pageCount;
+		let pageNum = this._param.pageIndex + 1;
+
+		if (this.tPager) {
+			this.pagination.current_page = this._param.pageIndex;
+			this.tPager.pagination(rowCount, this.pagination);
+
+			if (this.pagination.showCount) {
+				//this.pageCounter.html(format.json(this.pageTemplate, {rowCount, pageNum, pageCount}));
+
+				this.pageCounter.find('.bt').text(rowCount);
+				//this.iptPageGo.val(pageNum).data('total' , pageCount);
+				this.pageCounter.find('.bc').text(pageCount);
+			}
+		}
+		else {
+
+			this.tfoot = this.fixFooter ? this.table.next('.gridPaginationFooter') : this.table.find("tfoot td:eq(0)");
+			this.tPager = $('<div class="pagination_container"></div>').appendTo(this.tfoot);
+			this.tPager.pagination(rowCount, this.pagination);
+
+
+			this.iptPageGo = this.tfoot.find('.iptPageGo');
+			this.pagination.append_number_input = this.iptPageGo;
+
+			this.pageCounter = $('<span></span>');
+			this.tPager.after(this.pageCounter);
+
+			if (this.pagination.showCount) {
+
+				if (typeof this.pagination.showCount === "string")
+					this.pageTemplate = this.pagination.showCount as string;
+				else {
+					if (Languages.current === Languages.names.cn) {
+						this.pageTemplate = '共<span class="bt">${rowCount}</span>条记录 , 第<span class="bf">${pageNum}</span> / <span class="bc">${pageCount}</span>页';
+					}
+					else {
+						this.pageTemplate = 'total: <span class="bt">${rowCount}</span> record(s), <span class="bf">${pageNum}</span> / <span class="bc">${pageCount}</span> page(s)';
+					}
+				}
+
+				this.pageCounter.html(jsonFormat(this.pageTemplate, {rowCount, pageNum, pageCount}));
+
+				let bf = this.pageCounter.find('.bf');
+				this.iptPageGo.val(pageNum);//.data('total' , pageCount);
+				bf.replaceWith(this.iptPageGo);
+			}
+
+			if (this.pagination.customizable) {
+
+				if (typeof this.pagination.customizable != 'object')
+					this.pagination.customizable = [10, 20, 50];
+
+				let ps = this.pagination.customizable as Array, arq = [];
+
+				for (let q = 0, ql = ps.length; q < ql; q++)
+					arq[q] = '<option value="' + ps[q] + '" ' + (ps[q] == this.pagination.pageSize ? 'selected' : '') + '>' + ps[q] + '</option>';
+
+				let pageSelector = $('<select>' + arq.join('') + '</select>');
+				if (Languages.current === Languages.names.cn)
+					this.pageCounter.after($('<label class="pageSelectorLabel">每页</label>').append(pageSelector).append('条'));
+				else
+					this.pageCounter.after($('<label class="pageSelectorLabel"></label>').append(pageSelector).append(' / page'))
+
+				//on change event
+				pageSelector.on('change.opg', function () {
+
+					that.pagination.items_per_page = that._param.pageSize = ~~(this.options[this.selectedIndex] as HTMLOptionElement).value;
+					that._param.pageIndex = 0;
+					that.update(that._param);
+
+					return false;
+
+				});
+			}
+		}
+
+
+	}
+
+	//@return object array
+	getCheckData() {
+		if (this.cmd) {
+			let key = (this.cmdCheckAll || this.cmdCheckOne).val(),
+				chkBoxes = this.tbody.find("input[name='" + key + "']"),
+				rev = this.cmdCheckAll ? [] : null;
+
+			for (let i = 0, l = chkBoxes.length; i < l; i++) {
+				if ((chkBoxes[i] as HTMLInputElement).checked) {
+					if (this.cmdCheckOne)
+						return this.data[i];
+					else
+						rev.push(this.data[i]);
+				}
+			}
+
+			return rev;
+		}
+		else
+			return null;
+	}
+
+	//@return string value array
+	getCheckedValue() {
+		if (this.cmd) {
+			let key = (this.cmdCheckAll || this.cmdCheckOne).val(),
+				chkBoxes = this.tbody.find("input[name='" + key + "']:checked");
+			let rev;
+
+			if (this.cmdCheckAll) {
+				rev = [];
+				chkBoxes.each((i, elem: HTMLInputElement) => {
+					rev.push(elem.value);
+				});
+			}
+			else {
+				rev = chkBoxes.length ? chkBoxes.val() : null;
+			}
+
+			return rev;
+		}
+		else
+			return null;
+	}
+}
+
+
+export default Table;

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+	<meta name="renderer" content="webkit">
+	<title>TMS</title>
+	<link rel="stylesheet" href="/css/ams.scss">
+	<!--STYLE_PLACEHOLDER-->
+	{{block 'pageHeader'}}{{/block}}
+</head>
+<body class="pop">
+
+{{block 'content'}}{{/block}}
+
+
+<div id="opgAjaxLoading">
+	<div id="opgAjaxLoadingText">
+		<div id="square-spin"></div>
+		loading ...
+	</div>
+</div>
+
+<script src="/lib/mod.js"></script><!--ignore-->
+<script src="/lib/jquery-3.2.1.js"></script><!--ignore-->
+<script src="/lib/jquery.resizableColumns.js"></script><!--ignore-->
+<script src="/lib/jquery.pagination.js"></script><!--ignore-->
+<script src="/js/jquery.plugins.js"></script><!--ignore-->
+<script src="/lib/template-web.js"></script><!--ignore-->
+<script src="./{{$file.filename }}.i18n.js"></script><!--ignore-->
+
+{{if scripts}}
+{{each scripts}}
+<script src="{{$value}}"></script>
+{{/each}}
+{{/if}}
+
+<!--SCRIPT_PLACEHOLDER-->
+
+<script>
+	!function () {
+		var Languages = require('ts/util/Languages').Languages;
+		Languages.init(languagePkg, function (lngPackage) {
+			var templateElem = document.getElementById('tpl-mainSection');
+			var mainSection = document.getElementById('mainSection');
+			if (mainSection && templateElem) {
+				document.getElementById('mainSection').innerHTML = template('tpl-mainSection', lngPackage);
+			}
+
+			$('.templateContainer').each(function (index , elem) {
+				var tmpl = $('script' , this).html();
+				var render = template.compile(tmpl);
+				elem.innerHTML = render(lngPackage);
+			});
+		});
+
+		console.log('Languages:', Languages);
+
+		require('{{$file.filename}}');
+	}();
+</script>
+
+{{block 'pageScripts'}}
+
+{{/block}}
+
+
+
+</body>
+</html>

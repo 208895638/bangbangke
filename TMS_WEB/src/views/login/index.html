@@ -1,0 +1,72 @@
+{{extend '/comm/layout.html'}}
+
+{{block 'pageHeader'}}
+
+<link rel="stylesheet" href="./assets/login.scss?__inline">
+<script>
+    window.CONFIG = {
+        apiServer: '{{apiServer}}',
+        loginPage: window.location.pathname
+    };
+</script><!--ignore-->
+{{/block}}
+
+
+{{block 'content'}}
+
+
+<div id="loginPanel">
+    <div id="mainSection">
+        <p class="text-center logoPh"></p>
+        <form id="loginForm" action="#" onsubmit="return false">
+            <input id="loginName" name="username" type="text" placeholder="用户名" class="form-control" value="admin">
+            <input id="password" name="password" type="password" placeholder="密码" class="form-control" value="123456">
+            <div id="orgId" class="org"></div>
+        </form>
+        <button id="btnLogin" class="btn btn-info">登录</button>
+    </div>
+</div>
+
+
+<!--[if lt IE 10]>
+<style type="text/css">
+    #ie6wraning {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 99999999;
+        background-color: #911f0c;
+        color: #fff;
+        line-height: 30px;
+        height: 30px;
+        width: 100%;
+        text-align: center;
+    }
+
+    #ie6wraning a {
+        color: #ff0;
+    }
+
+    #ie6wraning a:hover {
+        color: #fff;
+    }
+
+    * html #ie6wraning {
+        position: absolute;
+    }
+</style>
+
+<div id="ie6wraning">
+    您使用的浏览器是旧版IE，无法正常使用本系统，请升级您的浏览器至新版本。
+    推荐您使用：
+    <a target="_blank" href="https://www.google.com/chrome/browser/desktop/index.html">谷歌浏览器</a>、
+    <a target="_blank" href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads">新版IE</a>、
+    <a target="_blank" href="http://se.360.cn/">360浏览器</a>、
+    <a target="_blank" href="http://www.maxthon.cn/">遨游浏览器</a>
+</div>
+<![endif]-->
+
+
+{{/block}}
+
+

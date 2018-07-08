@@ -376,7 +376,9 @@ function getDateJson(){
  		var _json = [];
  		var _today = new Date();
  		var _year = _today.getFullYear();
+ 		var _month = _today.getMonth() + 1;
     var _day = _today.getDate();
+    var _hour = _today.getHours();
     for(var i=0;i<3;i++){
     		var _yearJson = {
     			"name":(parseInt(_year)+i)+"年",
@@ -384,30 +386,88 @@ function getDateJson(){
 				"child":[]
     		}
     		_json.push(_yearJson);
-    		for(var j=1;j<13;j++){
-    			var _monthJson = {
-	    			"name":(j<10)?("0"+j+"月"):(j+"月"),
-					"value":(j<10)?("0"+j):j,
-					"child":[]
-	    		}
-	    		_json[i].child.push(_monthJson);
-	    		var _dayNum = getDaysInOneMonth((parseInt(_year)+i),j);
-	    		for(var m=1;m<_dayNum+1;m++){
-	    			var _dayJson = {
-		    			"name":(m<10)?("0"+m+"日"):(m+"日"),
-						"value":(m<10)?("0"+m):m,
+    		if(i==0){
+    			for(var j=_month;j<13;j++){
+	    			var _monthJson = {
+		    			"name":(j<10)?("0"+j+"月"):(j+"月"),
+						"value":(j<10)?("0"+j):j,
 						"child":[]
 		    		}
-	    			_json[i].child[j-1].child.push(_dayJson);
-	    			for(var n=0;n<24;n++){
-		    			var _hourJson = {
-			    			"name":(n<10)?("0"+n+"时"):(n+"时"),
-							"value":(n<10)?("0"+n+""):(n+"")
+		    		_json[i].child.push(_monthJson);
+		    		var _dayNum = getDaysInOneMonth((parseInt(_year)+i),j);
+		    		if(j==_month){
+		    			for(var m=_day;m<_dayNum+1;m++){
+			    			var _dayJson = {
+				    			"name":(m<10)?("0"+m+"日"):(m+"日"),
+								"value":(m<10)?("0"+m):m,
+								"child":[]
+				    		}
+			    			_json[i].child[j-_month].child.push(_dayJson);
+			    			if(m==_day){
+			    				for(var n=_hour;n<24;n++){
+					    			var _hourJson = {
+						    			"name":(n<10)?("0"+n+"时"):(n+"时"),
+										"value":(n<10)?("0"+n+""):(n+"")
+						    		}
+					    			_json[i].child[j-_month].child[m-_day].child.push(_hourJson);
+					    		}
+			    			}else{
+			    				for(var n=0;n<24;n++){
+					    			var _hourJson = {
+						    			"name":(n<10)?("0"+n+"时"):(n+"时"),
+										"value":(n<10)?("0"+n+""):(n+"")
+						    		}
+					    			_json[i].child[j-_month].child[m-_day].child.push(_hourJson);
+					    		}
+			    			}
+			    			
 			    		}
-		    			_json[i].child[j-1].child[m-1].child.push(_hourJson);
+		    		}else{
+		    			for(var m=1;m<_dayNum+1;m++){
+			    			var _dayJson = {
+				    			"name":(m<10)?("0"+m+"日"):(m+"日"),
+								"value":(m<10)?("0"+m):m,
+								"child":[]
+				    		}
+			    			_json[i].child[j-_month].child.push(_dayJson);
+			    			for(var n=0;n<24;n++){
+				    			var _hourJson = {
+					    			"name":(n<10)?("0"+n+"时"):(n+"时"),
+									"value":(n<10)?("0"+n+""):(n+"")
+					    		}
+				    			_json[i].child[j-_month].child[m-1].child.push(_hourJson);
+				    		}
+			    		}
+		    		}
+		    		
+	    		}
+    		}else{
+    			for(var j=1;j<13;j++){
+	    			var _monthJson = {
+		    			"name":(j<10)?("0"+j+"月"):(j+"月"),
+						"value":(j<10)?("0"+j):j,
+						"child":[]
+		    		}
+		    		_json[i].child.push(_monthJson);
+		    		var _dayNum = getDaysInOneMonth((parseInt(_year)+i),j);
+		    		for(var m=1;m<_dayNum+1;m++){
+		    			var _dayJson = {
+			    			"name":(m<10)?("0"+m+"日"):(m+"日"),
+							"value":(m<10)?("0"+m):m,
+							"child":[]
+			    		}
+		    			_json[i].child[j-1].child.push(_dayJson);
+		    			for(var n=0;n<24;n++){
+			    			var _hourJson = {
+				    			"name":(n<10)?("0"+n+"时"):(n+"时"),
+								"value":(n<10)?("0"+n+""):(n+"")
+				    		}
+			    			_json[i].child[j-1].child[m-1].child.push(_hourJson);
+			    		}
 		    		}
 	    		}
     		}
+    		
     		
     }
     return _json;

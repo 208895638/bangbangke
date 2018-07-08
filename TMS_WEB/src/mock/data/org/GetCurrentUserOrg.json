@@ -1,0 +1,22 @@
+{
+  "error": "",
+  "data": [
+    {
+      "org_id": 1,
+      "org_code": "000000",
+      "org_name": "test",
+      "contact_name": "test",
+      "contact_phone": "1234567890",
+      "org_province": null,
+      "org_city": null,
+      "org_district": null,
+      "org_address": null,
+      "wechat_account": null,
+      "alipay_account": null,
+      "deposit_bank": null,
+      "deposit_account": null,
+      "fuel_card": null,
+      "parent_org_id": 0
+    }
+  ]
+}
