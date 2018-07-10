@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>我的运输单</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mpicker.css">
+    <link rel="stylesheet" type="text/css" href="orderList.css"/>
+    <style type="text/css">
+    	::-webkit-input-placeholder{
+    		color: #cccccc;
+    	}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body class="bg-l1">
+	<header class="mui-bar mui-bar-nav">
+    <h1 class="mui-title">我的运输单</h1>
+	</header>
+	<div style="line-height: 1;" class="mui-content position-relative margin-b-60 bg-l1">
+		<div id="orderHeard" class="d-flex font-l3-color margin-b-10 bg-white">
+			<div class="orderType flex-auto padding-a-10 margin-l-10 margin-r-10 text-center active">待运输</div>
+			<div class="orderType flex-auto padding-a-10 margin-l-10 margin-r-10 text-center">运输中</div>
+			<div class="orderType flex-auto padding-a-10 margin-l-10 margin-r-10 text-center">已完成</div>
+			<div class="orderType flex-auto padding-a-10 margin-l-10 margin-r-10 text-center">已取消</div>
+		</div>
+		<ul id="orderList" class="d-flex flex-column">
+			<!--<li class="d-flex bg-white padding-b-15 flex-column bor-bottom margin-b-10">
+				<div class="d-flex padding-a-15 padding-b-15">
+					<div class="flex-auto font-l3-color">运输中</div>
+					<div>一口价:￥600</div>
+				</div>
+				<div style="background-color: #FAFAFA;" class="d-flex flex-column padding-t-15 padding-b-15">
+					<div class="d-flex align-items-center padding-l-15 padding-r-15 margin-b-8">
+						<div class="start-area margin-r-15">起始地</div>
+						<div class="">上海市徐汇区</div>
+					</div>
+					<div class="d-flex align-items-center padding-l-15 padding-r-15 margin-b-10">
+						<div class="end-area margin-r-15">目的地</div>
+						<div class="">陕西省西安市碑林区</div>
+					</div>
+					<div class="d-flex padding-l-25 font-l2-color font-size-10">
+						<span class="margin-r-5">4.2米</span>
+						<span class="margin-r-5">箱式</span>
+						<span class="margin-r-5">大米</span>
+						<span class="margin-r-5">两吨</span>
+						<span class="margin-r-5">50方</span>
+						<span class="margin-r-5">一装一卸</span>
+					</div>
+				</div>
+			</li>-->
+		</ul>
+	</div>
+	<div class="order-bottom">
+		<div class="d-flex align-items-center">
+			<div id="home" class="d-flex flex-column flex-auto align-items-center">
+				<div class="offhome-icon"></div>
+				<div style="font-size: 0.16rem;" class="mui-tab-label">首页</div>
+			</div>
+			<div id="order" class="d-flex flex-column flex-auto align-items-center">
+				<div class="onorder-icon"></div>
+				<div style="font-size: 0.16rem;" class="mui-tab-label">运单</div>
+			</div>
+			<div id="mine" class="d-flex flex-column flex-auto align-items-center">
+				<div class="offmine-icon"></div>
+				<div style="font-size: 0.16rem;" class="mui-tab-label">我的</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="../../static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/json.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/mPicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="orderList.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+
+

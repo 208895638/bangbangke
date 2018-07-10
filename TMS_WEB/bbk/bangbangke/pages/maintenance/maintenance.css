@@ -1,0 +1,176 @@
+#site:before{
+    content: "";
+    display: block;
+    width: 0.11rem;
+    height: 0.13rem;
+    background-image: url(../../static/images/icon.png);
+    background-size: 3.755rem 3.415rem;
+    background-repeat: no-repeat;
+    background-position: -1.66rem -0.25rem;
+    margin-left: 0.15rem;
+    margin-right: 0.05rem;
+  }
+  #site:after{
+      content: "";
+      display: block;
+      width: 0.06rem;
+      height: 0.04rem;
+      background-image: url(../../static/images/icon.png);
+    background-size: 3.755rem 3.415rem;
+    background-repeat: no-repeat;
+    background-position: -0.67rem -0.66rem;
+    margin-right: 0.1rem;
+    margin-left: 0.05rem;
+  }
+  header{
+      position: relative;
+  }
+  #site{
+      position: absolute;
+      right: .25rem /* 25/100 */;
+      top: .13rem /* 13/100 */;
+      color: #fff;
+  }
+  #maintenance{
+      margin-top: 40px;
+  }
+  #maintenance ul{
+      padding: .1rem  .14rem ;    
+  }
+  #maintenance ul li{
+    padding-top: .1rem;
+    padding-bottom: .36rem;  
+    height: 1.34rem;
+    overflow-y: hidden;
+    position: relative;
+}
+#maintenance ul li .hideInfo p{
+    font-size: .12rem;
+    line-height: .16rem;
+    color: #212121;
+    padding: .1rem;
+    background: #F5F5F5;
+}
+#maintenance ul li .hideInfo .inforAddress{
+    color: #999999;
+}
+#maintenance ul li .hideInfo .inforAddress .address{
+    padding-left: .17rem;
+    background:url(../../static/images/address.png) no-repeat left center ;
+    background-size: .16rem;
+}
+#maintenance ul li .maintenanceBox{
+    margin-bottom: .1rem;
+}
+
+#maintenance ul li .more{
+    position: absolute;
+    left: 0;
+    height: .36rem;
+    line-height: 0.36rem;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #999999;
+    background: #fff;
+}
+#maintenance ul li .more img{
+    height: .06rem;
+    margin-left: .06rem;
+}
+#maintenance ul li .more .takeUp{
+    display: none;
+}
+#maintenance ul .on{
+    height: auto;
+}
+#maintenance ul .on .open {
+    display: none!important;
+}
+#maintenance ul .on .takeUp{
+    display: block!important;
+}
+  #maintenance .head{
+      width: .9rem;
+      height: .75rem;
+      margin-right: .1rem;
+  }
+  .hide{
+      display: none;
+  }
+  .maintenanceT{
+      width: 100%;
+  }
+  .maintenanceImg{
+      width: .3rem;
+      height: .3rem;
+  }
+  .maintenanceC{
+      width: 100%;
+  }
+  .maintenanceC .authentication{
+      padding-left: .15rem;
+      background: url(../../static/images/safe.png) no-repeat left center;
+      background-size: .12rem;
+      color: #ff9600;
+  }
+  .maintenanceC .time{
+    color: #999999;
+}
+.maintenanceOption{
+    color: #45C175;
+    margin-top: .1rem;
+}
+.maintenanceOption .btn{
+    padding:0 .02rem;
+    border: 1px solid  transparent;
+    border-radius: 0.02rem;
+    margin-left: .15rem;
+}
+.maintenanceOption .btn-orange{
+    border-color: #F54725;
+    color: #F54725;
+}
+
+.step1,.step2 ,.step3{
+	background: #fff;
+	padding-top: 0.19rem;
+}
+.header{
+	margin-bottom: 0.17rem;
+	color: #777777;
+	padding-left: 0.14rem;
+	position: relative;
+}
+.header em{
+	position: absolute;
+	right: 0.14rem;
+	font-style: normal;
+	color: #45C175;
+}
+.length-sel{
+	width: 0.72rem;
+    margin: 0.07rem;
+    height: 0.3rem;
+    line-height: 0.28rem;
+    text-align: center;
+    border: 1px solid #ededed;
+	border-radius: 0.03rem;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.select11 {
+    border: 1px solid #45C175!important;
+    color: #45C175!important;
+}
+.searchConditions{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 40px;
+    background: #fff;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling : touch;
+}

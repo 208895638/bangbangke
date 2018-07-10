@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>二手车详情</title>
+	<script src="../../static/js/mui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../static/css/mui.css" />
+	<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="secondhandCarDetail.css" />
+	<script type="text/javascript" charset="utf-8">
+		(function () {
+			window.onresize = function () {
+				var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+				document.documentElement.style.fontSize = winW / 3.6 + "px";
+			};
+			var winW = document.documentElement.clientWidth || document.body.clientWidth;
+			document.documentElement.style.fontSize = winW / 3.6 + "px";
+		})(window)
+		mui.init();
+	</script>
+</head>
+
+<body>
+	<div id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
+			<h1 class="mui-title">{{message.Title}}</h1>
+		</header>
+		<div class="mui-content position-relative padding-b-30">
+			<div class="d-flex secondcar-banner align-items-end">
+				<!-- <div class="car-info margin-b-30 margin-l-13 text-fff">上海市 徐汇区 2018-05-23 发布</div> -->
+			</div>
+			<div class="d-flex flex-column bg-white">
+				<div class="d-flex flex-column car-info-card inforTitle">
+					<div class="font-l4-color font-size-17 fontWeight">{{message.Title}}</div>
+					<!-- <div class="d-flex align-items-center">
+						<div class="btn btn-18 orange">商家推荐</div>
+						<div class="flex-auto margin-l-6 text-gray">车源编号 B4y76890</div>
+						<div class="rd margin-r-6">热度</div>
+						<div class="orange">455</div>
+					</div>
+					<div class="d-flex flex-wrap margin-t-20">
+						<div class="btn btn-18 margin-r-6">提供挂靠</div>
+						<div class="btn btn-18">代办过户</div>
+					</div> -->
+				</div>
+				<div class="margin-l-30 margin-r-30 margin-t-20 d-flex align-items-baseline" style="color: #838383;">
+					<div>全款价格</div>
+					<div class="flex-auto orange">
+						<span style="font-size: 0.3rem;">{{message.price}}</span>
+						<span>万</span>
+					</div>
+					<!-- <div class="orange">可分期，首付8万起</div> -->
+				</div>
+			</div>
+			<!-- 车辆档案 -->
+			<div class="archives">
+				<div class="font-l4-color font-size-19 fontWeight">车辆档案</div>
+				<div class="inforBox">
+					<ul class=" carDetailInfo clearfix">
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Brand}}</h2>
+								<p>品牌</p>
+							</div>
+						</li>
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Vehicle_system}}</h2>
+								<p>车系</p>
+							</div>
+						</li>
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Vehicle_system}}</h2>
+								<p>上牌时间</p>
+							</div>
+						</li>
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Horsepower}}</h2>
+								<p>马力</p>
+							</div>
+						</li>
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Drive_form}}</h2>
+								<p>驱动形式</p>
+							</div>
+						</li>
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Gearbox}}</h2>
+								<p>变速箱</p>
+							</div>
+						</li>
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Standard_discharge}}</h2>
+								<p>标准排放</p>
+							</div>
+						</li>
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Engine_brand}}</h2>
+								<p>发动机品牌</p>
+							</div>
+						</li>
+						<li class="d-flex justify-content-between">
+							<div>
+								<h2>{{message.Traffic_insurance_time}}</h2>
+								<p>交强险时间</p>
+							</div>
+						</li>
+					</ul>
+					<div class="more">
+						<span class="span1">查看更多参数</span>
+						<span class="span2">
+							收起更多参数
+						</span>
+					</div>
+				</div>
+
+			</div>
+			<!-- 车辆描述 -->
+			<div class="describtion">
+				<div class="desbTitle">
+					<span>车辆描述</span>
+					<em></em>
+				</div>
+				<p>
+					{{message.Description}}
+				</p>
+			</div>
+		</div>
+		<div class="remind">
+			<div class="remindTitle">
+				车辆参数配置由卖家提供,仅供参考,实际参数已卖家售卖车辆为准,如参数有误,请及时反馈!
+			</div>
+			<div class="contact">
+				<a class="btn btn-orange" :href="'tel:' + message.Contact_information">
+					联系卖家
+				</a>
+			</div>
+		</div>
+	</div>
+	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/vue.js"></script>
+	<script src="secondhandCarDetail.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

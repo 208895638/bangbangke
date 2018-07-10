@@ -1,0 +1,182 @@
+.secondcar-banner{
+	background-image: url(../../static/img/secondcar-img.jpg);
+	height: 2.45rem;
+	width: 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.car-info-card{
+	box-shadow: 0 0 0.12rem rgba(33,33,33,0.08);
+	margin: 0 0.13rem;
+	border-radius: 0.04rem;
+	padding: 0.15rem;
+	background-color: #ffffff;
+}
+.inforTitle{
+	margin-top: -.2rem /* 20/100 */;
+}
+.fontWeight{
+	font-weight: bold;
+}
+.btn{
+	border: 1px solid #59C783;
+	font-size: .12rem /* 12/100 */;
+	border-radius: .02rem /* 2/100 */;
+	color: #59C783;
+}
+.btn-18{
+	padding:0 .03rem /* 3/100 */;
+}
+.orange{
+	border-color: #EE6723;
+	color: #EE6723;
+}
+.text-fff{
+	color: #fff;
+}
+.text-gray{
+	color: #D0D0D0;
+}
+.rd{
+	padding-left: .2rem /* 20/100 */;
+	background: url(../../static/images/hy.png) no-repeat left center;
+	background-size:0.12rem; 
+}
+.archives{
+	padding: 0.06rem 0.15rem;
+	background: #fff;
+	border-top: .1rem solid #F5F5F5;
+}
+.carDetailInfo li{
+	width: 33%;
+	float: left;
+	margin: 0.1rem 0;
+}
+.inforBox{
+	height: 1.8rem /* 200/100 */;
+	overflow: hidden;
+	padding-bottom: 0.2rem;
+	position: relative;
+}
+.inforBox .more{
+	background: #fff;
+	width: 100%;
+	height: .17rem /* 17/100 */;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	color: #59C783;
+}
+.inforBox .more .span1{
+	padding-right: .15rem /* 15/100 */;
+	background: url(../../static/images/xia.png) no-repeat right center;
+	background-size: 10px; 
+}
+.inforBox .more .span2{
+	display: none;
+	padding-right: .15rem /* 15/100 */;
+	background: url(../../static/images/shang.png) no-repeat right center;
+	background-size: 10px; 
+	font-style: normal;
+}
+.on{
+	height: auto;
+}
+.on .span1{
+	display: none!important;
+	padding-right: .15rem /* 15/100 */;
+	background: url(../../static/images/xia.png) no-repeat right center;
+	background-size: 10px; 
+}
+ .on .span2{
+	padding-right: .15rem /* 15/100 */;
+	background: url(../../static/images/shang.png) no-repeat right center;
+	background-size: 10px; 
+	font-style: normal;
+	display: inline-block!important;
+}
+.carDetailInfo li div{
+	text-align: center;
+	padding: 0 0.12rem;
+	margin: 0 auto;
+	border-right: 1px solid #F6F6F6;
+}
+.carDetailInfo li h2{
+	font-size: .16rem /* 16/100 */;
+	overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.carDetailInfo li p{
+	overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+.clearfix {
+    zoom: 1;
+}
+.describtion{
+	padding: 0 .15rem /* 15/100 */;
+	
+}
+.describtion .desbTitle{
+		position: relative;
+}
+.describtion .desbTitle span{
+	padding-right: 0.08rem;
+	position: relative;
+	z-index: 2;
+	color: #838383;
+	background: #fff;
+}
+.describtion .desbTitle em{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	height: 1px;
+	background: #EDEDED;
+	z-index: 1;
+}
+.describtion p{
+	padding-top: .1rem /* 10/100 */;
+	font-size: 0.16rem;
+	line-height: .26rem /* 26/100 */;
+	color: #212121;
+}
+/* .remind{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background: #fff;
+	width: 100%;
+	z-index: 10;
+} */
+.remindTitle{
+	width: 90%;
+	line-height: 0.24rem;
+	color: #FF9600;
+	border-top: 1px solid #EDEDED;
+	padding-top: .08rem /* 8/100 */;
+	margin: 0 auto;
+}
+.contact{
+	padding: 0.1rem 0;
+}
+.contact .btn{
+	display: block;
+	width: 88%;
+	margin: 0 auto;
+	background: #F54725;
+	color: #fff;
+	border: none;
+	height: .4rem /* 40/100 */;
+	line-height: .4rem /* 40/100 */;
+	font-size: .16rem /* 16/100 */;
+	text-align: center;
+	border-radius: 0.04rem;
+}

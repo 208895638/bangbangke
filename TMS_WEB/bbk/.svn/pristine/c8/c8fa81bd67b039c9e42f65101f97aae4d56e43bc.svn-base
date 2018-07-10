@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>配件维修</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="maintenance.css"/>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="app">
+        <header class="mui-bar mui-bar-nav h1">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
+            <h1 class="mui-title">配件维修</h1>
+            <div id="site" class="d-flex align-items-center" @click="getLocation">{{userLocation}}</div>
+        </header>
+        <section id="maintenance">
+            <ul v-for="(item , index) in maintenanceInfo">
+                <li class="bor-bottom" :key="index" :class=" inforState == true ? '' : 'on'">
+                    <div class="d-flex maintenanceBox justify-content-between">
+                        <img class="head" src="../../static/img/company.png">
+                        <div class="d-flex flex-column flex-auto">
+                            <div class="d-flex justify-content-between align-self-baseline maintenanceT">
+                                <div>
+                                    {{item.Title}}
+                                </div>
+                                <div>
+                                    <a :href="'tel:' + item.Contact_information"> <img src="../../static/images/phone.png" alt="" class="maintenanceImg"></a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-self-baseline maintenanceC">
+                                <div class="authentication">
+                                    已认证
+                                </div>
+                                <div class="time">
+                                    营业时间: {{item.Opening_Hours}}
+                                </div>
+                            </div>
+                            <div class="maintenanceOption d-flex align-items-center">
+                                <div>
+                                    维修
+                                </div>
+                                <div>
+                                    <div class="btn btn-orange">
+                                        出售
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hideInfo">
+                        <p>{{item.Description}}</p>
+                        <div class="d-flex justify-content-between inforAddress">
+                            <div class="address">
+                                {{item.Region}}
+                            </div>
+                            <!-- <div>
+                                9.6km
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="more" >
+                        <div class="open" @click="open">
+                            展开详情<span><img src="../../static/images/bottom.png" alt=""></span>
+                        </div>
+                        <div class="takeUp" @click="takeUp">
+                            收起详情<span><img src="../../static/images/top.png" alt=""></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <div class="searchConditions" v-if="selectArea">
+                <div class="area common">
+                    <div class="step1 step" data-attr = "1" v-if="step1Show">
+                        <div class="header">
+                            已选择: <span id="selected">{{selectedArea}}</span>
+                        </div>
+                        <div class="container d-flex flex-auto align-items-center justify-content-center">
+                            <div class="d-flex flex-wrap font-size-14 font-l2-color " id="province">
+                                <div class="length-sel" :class="{ 'select11': index === step1Border }" v-for="(item , index) in provincesData" :key="index" @click="getCitiesList(item.areaId , item.areaName ,index )">{{item.areaName}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step2 step" data-attr = "2" v-if="step2Show">
+                        <div class="header">
+                            已选择: <span>{{selectedCity}}</span>
+                            <em @click = "goBackToStep1">返回上一级</em>
+                        </div>
+                        <div class="container d-flex flex-auto align-items-center justify-content-center">
+                            <div class="d-flex flex-wrap font-size-14 font-l2-color" id="citiesList">
+                                <div class="length-sel" :class="{ 'select11': index === step2Border }" v-for="(item , index) in cityList" :key="index" @click="getAreasList(item.areaId , item.areaName , index)">{{item.areaName}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step3 step" data-attr = "3" v-if="step3Show">
+                        <div class="header">
+                            已选择: <span>{{selectedXian}}</span>
+                            <em @click = "goBackToStep2">返回上一级</em>
+                        </div>
+                        <div class="container d-flex flex-auto align-items-center justify-content-center">
+                            <div class="d-flex flex-wrap font-size-14 font-l2-color" id="areasList">
+                                <div class="length-sel" :class="{ 'select11': index === step3Border }" v-for="(item , index) in areasList" :key="index" @click="aa(item.areaName , index)">{{item.areaName}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="allmap">
+        
+            </div>
+            <div class="noResult font-size-20 margin-a-40 text-center" v-if="hasResult">
+                暂无数据
+            </div>
+    </div>
+    
+    
+	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://api.map.baidu.com/api?v=2.0&ak=ys6CdKOxctibStahrEGIqxu1LC8pOMe3" type="text/javascript" charset="UTF-8"></script>
+	<script src="../../static/js/vue.js"></script>
+	<script src="./maintenance.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+

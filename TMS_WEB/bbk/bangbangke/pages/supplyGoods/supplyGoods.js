@@ -1,0 +1,183 @@
+$(function(){
+	var alertHeight = $("#topNav").height()+$("#head").height();
+	var token  = getStorage("appToken");
+	$(".price-alert").css("top",alertHeight);
+	$(".length-alert").css("top",alertHeight);
+	$("#publishGood").on("click",function(){
+		mui.openWindow({
+			url:'../releaseGoods/releaseGoods.html'
+		});
+	});
+	$("#price").on("click",function(){
+		$(".length-alert").hide();
+		$(".price-alert").show();
+	});
+	$("#length").on("click",function(){
+		$(".price-alert").hide();
+		$(".length-alert").show();
+	});
+	
+	$(".around").on("click",function(event){
+		event.stopPropagation();
+		var priceType = $(this).text();
+		$("#price").text(priceType);
+		$("#priceList").children().removeClass("select");
+		$(this).addClass("select");
+		$(".price-alert").hide();
+		getList();
+	});
+	
+	$(".length-sel").on("click",function(event){
+		event.stopPropagation();
+		var lengthType = $(this).text();
+		$("#length").text(lengthType);
+		$("#lengthList").children().removeClass("select");
+		$(this).addClass("select");
+		$(".length-alert").hide();
+		getList();
+	});
+	
+	$(".price-alert").on("click",function(event){
+		event.stopPropagation();
+		$(".price-alert").hide();
+	});
+	
+	$(".length-alert").on("click",function(event){
+		event.stopPropagation();
+		$(".length-alert").hide();
+	});
+	
+	$(".stop").on("click",function(event){
+		event.stopPropagation();
+	});
+	$("#submit").on("click",function(){
+		var elseLength = $(".else-length").val();
+		if(!elseLength){
+			$(".length-alert").hide();
+		}else{
+			$("#length").text(elseLength);
+			$("#lengthList").children().removeClass("select");
+			$(".length-alert").hide();
+			getList();
+		}
+	});
+	getList();
+	
+	function getList(){
+		var startPlace = $("#startStation").val()=="全国"?"":$("#startStation").val();
+		var endPlace = $("#endStation").val()=="全国"?"":$("#endStation").val();
+		var priceSource = $("#price").text()=="报价不限"?"":$("#price").text();
+		var carLong = $("#length").text()=="车长不限"?"":$("#length").text();
+		mui.ajax({
+	  		url:basePath+"api/SupplyOfGoods/SupplyOfGoodsWhere",
+	  		headers:{'Authorization':token},
+	  		contentType: "application/json",
+	    data: {
+	    		start_area: startPlace,
+			  end_area: endPlace,
+			  quotation_Type: priceSource,
+			  car_long: carLong
+	    },
+	    async: true ,
+	    dataType: 'json',
+	    type: 'post',
+	    timeout: 10000,
+	    success: function(data) {
+	    		console.log(data);
+	      if(data.code=="200"){
+		      replaceData(data.data);
+	      }else{
+	      		alert(data.msg);
+	      }
+	    },
+	    error: function(err) {
+	      alert(err);
+	    }
+		});
+	}
+	
+	function replaceData(data){
+		var _data = data;
+		var j=data.length;
+		var priceStr = "报价不限"
+		var temp = "";
+		if(j<1){
+			$("#list").html("<div class='font-size-20 margin-a-40 text-center'>暂无数据</div>");
+			return false;
+		}
+		for(var i=0;i<j;i++){
+			var priceStr = data[i].Price_source?data[i].Price_source:"报价不限";
+			var _price = data[i].Quotation_type=="一口价"?"￥"+data[i].Price:"自由报价";
+			var _priceClass = data[i].Quotation_type=="一口价"?"font-size-20":"font-size-15";
+			temp += '<li priceType="'+data[i].Quotation_type+'" goodId="'+data[i].Id+'" class="goods d-flex flex-column padding-t-15 padding-r-15 padding-b-15 bor-bottom">'
+							+ '<div class="d-flex margin-b-5 align-items-center">'
+								+ '<div class="d-flex flex-auto align-items-center">'
+									+ '<div class="font-l4-color font-size-15">'+data[i].Start_city+' '+data[i].Start_area+'</div>'
+									+ '<div class="jiantou2 margin-r-10 margin-l-10"></div>'
+									+ '<div class="font-l4-color font-size-15">'+data[i].End_city+' '+data[i].End_area+'</div>'
+								+ '</div>'
+								+ '<div style="color: #F54725;" class="'+_priceClass+'">'
+									+ '<span>'+_price+'</span>'
+								+ '</div>'
+							+ '</div>'
+							+ '<div class="font-l2-color goods-info margin-b-15">'
+								+ '<span>'+data[i].Car_long+'</span>'
+								+ '<span>'+data[i].Car_type+'</span>'
+								+ '<span>'+data[i].Goods_name+'</span>'
+								+ '<span>'+data[i].Goods_weight+'吨</span>'
+								+ '<span>'+data[i].Goods_volume+'方</span>'
+								+ '<span>'+data[i].Load_type+'</span>'
+							+ '</div>'
+							+ '<div class="d-flex man-info align-items-center">'
+							+ '<div class="font-size-10 price-label">'+priceStr+'</div>'
+								+ '<div class="flex-auto margin-l-5 font-l2-color"></div>'
+								+ '<a href="tel:'+data[i].Publish_man+'"><div class="phone"></div></a>'
+							+ '</div>'
+						+ '</li>'
+		}
+		$("#list").html(temp);
+		$(".goods").on("click",function(){
+			var goodId = $(this).attr("goodId");
+			var priceType = $(this).attr("priceType");
+			mui.openWindow({
+				url:'../orderReceiving/orderReceiving.html?priceType='+priceType+'&goodId='+goodId
+			});
+		});
+	}
+	
+	var startData=$('#startStation').mPicker({
+    level:3,
+    dataJson:city,
+    Linkage:true,
+    rows:5,
+    idDefault:true,
+    header:'',
+    confirm:function(json){
+    		var _value = $("#startStation").data('value3');
+      $("#startStation").val(_value);
+      getList();
+    },
+    cancel:function(json){
+      console.info('当前选中json：', json);
+    }
+ 	});
+	 var endData = $('#endStation').mPicker({
+	    level:3,
+	    dataJson:city,
+	    Linkage:true,
+	    rows:5,
+	    idDefault:true,
+	    header:'',
+	    confirm:function(json){
+	      var _value = $("#endStation").data('value3');
+      		$("#endStation").val(_value);
+      		getList();
+	    },
+	    cancel:function(json){
+	      console.info('当前选中json：', json);
+	    }
+	})
+	
+	
+	
+})

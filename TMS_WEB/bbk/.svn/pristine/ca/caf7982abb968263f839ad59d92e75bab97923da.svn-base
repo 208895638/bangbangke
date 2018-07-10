@@ -1,0 +1,130 @@
+#font{
+	font-size: 0.14rem;
+}
+.start-station:before{
+	content: "";
+	display: inline-block;
+	width: 0.05rem;
+	height: 0.05rem;
+	background-color: #45C175;
+	border-radius: 50%;
+	margin-right: 0.05rem;
+	position: relative;
+	top: -0.02rem;
+}
+.end-station:before{
+	content: "";
+	display: inline-block;
+	width: 0.05rem;
+	height: 0.05rem;
+	background-color: #0056FF;
+	border-radius: 50%;
+	margin-right: 0.05rem;
+	position: relative;
+	top: -0.02rem;
+}
+.sanjiao{
+	width: 0.1rem;
+	height: 0.1rem;
+	background-image: url(../../static/images/icon.png);
+  background-size: 3.755rem 3.415rem;
+  background-repeat: no-repeat;
+  background-position: -0.54rem -0.66rem;
+}
+.bor-bottom{
+	border-bottom: 1px solid #EDEDED;
+}
+input{
+	padding: 0!important;
+	border: 0!important;
+}
+.site{
+	width: 100%;
+}
+.write-price{
+	margin-left: 0.25rem;
+	border: 1px solid #979797;
+	border-radius: 0.04rem;
+	width: 0.87rem;
+	padding: 0.07rem 0.1rem;
+	color: #cccccc;
+	
+}
+.write-price>input{
+	width: 100%;
+}
+.submit{
+	box-shadow: 0 0 0.12rem rgba(33,33,33,0.08);
+	padding: 0.1rem 0.2rem;
+}
+.submit>div{
+	text-align: center;
+  padding: 0.13rem;
+  color: #ffffff;
+  background-color: #45C175;
+  border-radius: 0.04rem;
+  font-size: 0.15rem;
+}
+.radio-sel{
+	height: 0.18rem;
+	width: 0.18rem;
+	background-image: url(../../static/images/artboard.png);
+	background-repeat: no-repeat;
+	background-size: 0.47rem 0.18rem;
+	margin-right: 0.1rem;
+}
+.radio-none{
+	height: 0.18rem;
+	width: 0.18rem;
+	background-image: url(../../static/images/artboard.png);
+	background-repeat: no-repeat;
+	background-size: 0.47rem 0.18rem;
+	background-position: -0.19rem 0;
+	margin-right: 0.1rem;
+}
+.width100{
+	width: 100%;
+}
+.selCarProperty{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #ffffff;
+	z-index: 99;
+	display: none;
+}
+.length-sel{
+	width: 0.72rem;
+	margin: 0.07rem;
+	height: 0.3rem;
+	line-height: 0.28rem;
+	text-align: center;
+	border: 1px solid #ededed;
+	border-radius: 0.03rem;
+}
+.select{
+	border: 1px solid #45C175!important;
+	color: #45C175!important;
+}
+.stop{
+	margin-top: 40px;
+}
+.else-length{
+	margin: 0.07rem;
+	border: 1px solid #ededed!important;
+	width: 1.59rem;
+	border-radius: 0.03rem;
+	font-size: 0.14rem;
+	padding: 0.07rem 0.1rem!important;
+}
+#sure{
+	background-color: #45C175;
+	color: #FFFFFF;
+	padding: 0.1rem;
+	font-size: 0.14rem;
+	border-radius: 0.04rem;
+	margin: 0.07rem;
+	margin-top: 0.26rem;
+}

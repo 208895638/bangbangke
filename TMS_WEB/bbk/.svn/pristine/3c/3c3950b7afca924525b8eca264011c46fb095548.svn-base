@@ -1,0 +1,207 @@
+$(function(){
+    // 已进入页面给三个tab点击出现的遮罩赋值高度
+    
+    var h2 =$(".h2").height();
+    $(".box").css({"top":h2+"px"});
+    $("#filter .xiala").on("click",function(){
+        var index = $(this).index();
+        $(".box").removeClass("hide");
+        $(".box .common").eq(index).removeClass("hide").siblings().addClass("hide");
+    });
+})
+var app3 = new Vue({
+    el: '#app',
+    data: {
+        userLocation:"",
+        searchVal:"搜索二手车",
+        sortMseeage:"默认排序",
+        carType:"车型不限",
+        brand:"品牌不限",
+        seen: "aa",
+        sortList:[
+            {
+                id:"默认排序"
+            },
+            {
+                id:"最新上架"
+            },
+            {
+                id:"价格最低"
+            },
+            {
+                id:"价格最高"
+            },
+            {
+                id:"降价急售"
+            }
+        ],
+        modelOfCarList:'',
+        carDetail:"",
+        brandList:'',
+    },
+    mounted(){
+        var _this = this;
+        this.getLocation();
+        this.getCarDetail();
+        this.getBrand(); //获取二手车全部信息
+        this.getUserLocation();//获取用户当前地址
+    },
+    methods:{
+        getLocation(){ //判断当前手机是否支持html5地理定位
+            console.log(this.showPosition);
+            // if (navigator.geolocation){ 
+            //   navigator.geolocation.getCurrentPosition(this.showPosition(),this.showError()); 
+            // }else{ 
+            //     mui.alert('当前手机不支持定位,请升级后再试!', '温馨提醒');
+            // } 
+        } ,
+        getCarDetail(){ //获取所有的车型
+            var _this = this;
+            mui.ajax({
+                url:basePath+"api/UsedCar/InIt",
+                // headers:{'Authorization':token},
+                contentType: "application/json",
+                // data: {},
+                async: true ,
+                dataType: 'json',
+                type: 'post',
+                timeout: 10000,
+                success: function(data) {
+                    if(data.code=="200"){
+                       _this.carDetail = data.data;
+                    }else{
+                            // alert(data.msg);
+                    }
+                },
+                error: function(err) {
+                    alert(err);
+                }
+            });
+        },
+        sendSortMessage(val){ //排序
+            this.sortMseeage = val;
+            $(".box").addClass("hide");
+            this.filterOptions();
+        },
+        sendCarType(val){ //车型
+            this.carType = val;
+            $(".box").addClass("hide");
+            this.filterOptions();
+        },
+        sendBrand(val){ //品牌
+            this.brand = val;
+            $(".box").addClass("hide");
+            this.filterOptions();
+        },
+        filterOptions(){ //筛选获取的结果
+            var _this = this;
+            mui.ajax({
+                url:basePath+"api/UsedCar/UsedCarWhere",
+                // headers:{'Authorization':token},
+                contentType: "application/json",
+                data: {
+                    title:this.searchVal == "搜索二手车" ? "" : this.searchVal,
+                    brand:this.brand == "品牌不限" ? "" : this.brand,
+                    vehicle_system: this.carType == "车型不限" ? "" : this.carType
+                },
+                async: true ,
+                dataType: 'json',
+                type: 'post',
+                timeout: 10000,
+                success: function(data) {
+                    if(data.code=="200"){
+                        console.log(data)
+                        if(data.data.length == 0){
+                            $(".noResult").removeClass("hide");
+                        }else{
+                            $(".noResult").addClass("hide");
+                        }
+                        _this.carDetail = data.data;
+                    }else{
+                            // alert(data.msg);
+                    }
+                },
+                error: function(err) {
+                    alert(err);
+                }
+            });
+        },
+        getBrand(){ //获取二手车品牌数据
+            var _this = this;
+            mui.ajax({
+                url:basePath+"api/Common/GetBrand",
+                // headers:{'Authorization':token},
+                contentType: "application/json",
+                // data: {},
+                async: true ,
+                dataType: 'json',
+                type: 'get',
+                timeout: 10000,
+                success: function(data) {
+                    if(data.code=="200"){
+                        console.log(data)
+                       _this.brandList = data.data;
+                    }else{
+                            // alert(data.msg);
+                    }
+                },
+                error: function(err) {
+                    alert(err);
+                }
+            });
+        },
+        getCarType(){ //获取二手车车型数据
+            var _this = this;
+            mui.ajax({
+                url:basePath+"api/Common/GetVehicleSystem",
+                // headers:{'Authorization':token},
+                contentType: "application/json",
+                // data: {},
+                async: true ,
+                dataType: 'json',
+                type: 'get',
+                timeout: 10000,
+                success: function(data) {
+                    if(data.code=="200"){
+                       _this.modelOfCarList = data.data;
+                    }else{
+                            // alert(data.msg);
+                    }
+                },
+                error: function(err) {
+                    alert(err);
+                }
+            });
+        },
+        sendInfor(val){  //存数据到localstorage 进入二手车详情的时候需要用到
+            var s = JSON.stringify(this.carDetail[val]);
+            console.log(s);
+            setStorage("secondCarData",s);
+            mui.openWindow({
+                url:'../secondhandCarDetail/secondhandCarDetail.html'
+            });
+        },
+        showPosition(position){ //获取用户的经纬度
+            var lat = position.coords.latitude; //纬度 
+            var lag = position.coords.longitude; //经度 
+            console.log('纬度:'+lat+',经度:'+lag); 
+        },
+        showError(error){ //当获取用户的经纬度失败时执行的函数
+            console.log(error.code)
+        },
+        getUserLocation(){
+            var _this = this;
+            var map = new BMap.Map("allmap");
+            var point = new BMap.Point(116.331398,39.897445);
+            map.centerAndZoom(point,12);
+            function myFun(result){
+                var cityName = result.name;
+                map.setCenter(cityName);
+                _this.userLocation = cityName;
+                // alert(cityName);
+            }
+            var myCity = new BMap.LocalCity();
+            myCity.get(myFun); 
+        }
+    },
+})

@@ -1,7 +1,7 @@
 import {store} from 'ts/util/store.ts';
-import {api} from "/ts/util/api";
+import {api} from "/ts/util/api.ts";
 import opg from 'ts/opg.ts';
-import PopUp from "ts/ui/Popup";
+import PopUp from "ts/ui/Popup.ts";
 
 store.set('apiServer', window.CONFIG.apiServer);
 store.set('loginPage', window.CONFIG.loginPage);

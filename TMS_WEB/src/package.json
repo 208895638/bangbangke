@@ -12,5 +12,15 @@
     "build:prd": "fis3 server clean && fis3 release prod  -d ../dist"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "fis-parser-node-sass": "^1.0.3",
+    "fis3": "^3.4.39",
+    "fis3-hook-commonjs": "^0.1.27",
+    "fis3-hook-relative": "^2.0.3",
+    "fis3-parser-art-template4": "^1.4.16",
+    "fis3-parser-typescript": "^1.2.2",
+    "fis3-postpackager-loader": "^2.1.11",
+    "fis3-postpackager-query": "^0.0.3"
+  }
 }

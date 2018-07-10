@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>二手车</title>
+    <script src="../../static/js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="secondhandCar.css"/>
+    <script type="text/javascript" charset="utf-8">
+    		(function() {
+          window.onresize = function() {
+            var winW = (document.documentElement.clientWidth || document.body.clientWidth);
+            document.documentElement.style.fontSize = winW / 3.6 + "px";
+          };
+          var winW = document.documentElement.clientWidth || document.body.clientWidth;
+          document.documentElement.style.fontSize = winW / 3.6 + "px";
+        })(window)
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="app">
+
+	
+	<header class="mui-bar mui-bar-nav h1">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left font-white"></a>
+	    <h1 class="mui-title">二手车</h1>
+	</header>
+	<div style="line-height: 1;" class="mui-content position-relative h2">
+		<!-- <div class="d-flex align-items-center">
+			<div id="site" class="d-flex align-items-center">{{userLocation}}</div>
+			<div class="d-flex flex-auto search margin-t-10 margin-b-10 margin-l-15 margin-r-15 justify-content-center align-items-center">
+				<input type="text" class="searchCondations" v-model="searchVal" @keyup.enter="filterOptions" >
+			</div>
+		</div> -->
+		<div class="d-flex align-items-center font-l3-color padding-a-14 bor-bottom" id="filter">
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala" >{{sortMseeage}}</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala" @click="getCarType">{{carType}}</div>
+			<div class="d-flex flex-auto align-items-center justify-content-center xiala" @click="getBrand">{{brand}}</div>
+		</div>
+	</div>
+	<div style="line-height: 1;" class="position-relative h2">
+		<ul class="d-flex flex-column margin-l-14">
+			<li  v-for="(item , index) in carDetail" :index="index" @click="sendInfor(index)" style="line-height: 1.26;" class="d-flex padding-t-16 padding-b-14 padding-r-14 bor-bottom">
+				<img class="car-img margin-r-14" src="../../static/img/cangku.jpg"/>
+				<div class="d-flex flex-auto flex-column justify-content-between">
+					<div class="font-size-15">{{item.Title}}</div>
+					<div class="">
+						<div class="font-size-10 font-l2-color">
+							<span>{{item.Description}}</span>
+							<!-- <span>5万公里</span>
+							<span>国五</span>
+							<span>其他</span> -->
+						</div>
+						<div class="d-flex margin-t-10 align-items-center">
+							<div style="color: #F54725;" class="font-size-14 margin-r-13">{{item.price}}万</div>
+							<div class="car-label">商家推荐</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="box hide">
+		<!-- 排序方式 -->
+		<div class="area hide common">
+			<ul class="mui-table-view" id="sort">
+				<li class="mui-table-view-cell" v-for="(item , index) in sortList" :index="index" @click="sendSortMessage(item.id)">{{item.id}}</li>
+			</ul>
+		</div>
+		<!-- 车型类型 -->
+		<div class="attribute hide common">
+			<ul class="mui-table-view" id="modelOfCar">
+				<li class="mui-table-view-cell" v-for="(item , index) in modelOfCarList" :index="index" @click="sendCarType(item)">{{item}}</li>
+			</ul>
+		</div>
+		<!-- 品牌类型 -->
+		<div class="source hide common">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" v-for="(item , index) in brandList" :index="index" @click="sendBrand(item)">{{item}}</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="noResult hide font-size-20 margin-a-40 text-center">
+	暂无数据
+</div>
+<div id="allmap">
+
+</div>
+	<script src="../../static/js/zepto-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://api.map.baidu.com/api?v=2.0&ak=ys6CdKOxctibStahrEGIqxu1LC8pOMe3" type="text/javascript" charset="UTF-8"></script>
+	<script src="../../static/js/vue.js"></script>
+	<script src="secondhandCar.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+
